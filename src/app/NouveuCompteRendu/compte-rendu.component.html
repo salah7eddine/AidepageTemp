@@ -1,0 +1,905 @@
+
+  <div class="container">
+  <section class="content-header">
+    <h1>
+      Compte Rendu
+      <small>Nouveau</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a routerLink="/home"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a routerLink="/compteRendu">Nouveau Compte Rendu</a></li>
+    </ol>
+  </section>
+
+    <div class="container spacer">
+
+
+    <!---------------------------- Debut du Bloc 1 ------------------------------->
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Compte Rendu</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="adresseChantier">Adresse Chantier</label>
+              <input type="text" class="form-control" id="adresseChantier" placeholder="Entrer l'adresse chantier">
+            </div>
+            <div class="form-group">
+              <label for="natureTr">Nature des travaux</label>
+              <input type="text" class="form-control" id="natureTr" placeholder="Entrer le type du chantier">
+            </div>
+
+
+              <div class="form-group">
+                <div> <label>Type Chantier</label></div>
+
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="typeChantier" id="optionsRadios1" value="Electricite" checked>
+                    Electricité
+                  </label>
+
+                  <label>
+                    <input type="radio" name="typeChantier" id="optionsRadios2" value=" Eau">
+                    Eau
+                  </label>
+
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="Assainissement">
+                    Assainissement
+                  </label>
+
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="ECP">
+                    ECP
+                  </label>
+
+                </div>
+              </div>
+
+
+            <div class="form-group">
+              <label for="entreprise">Entreprise sous traitante</label>
+              <input type="text" class="form-control" id="entreprise" placeholder="Entrer l'entreprise sous traitante">
+            </div>
+
+
+
+            <!-- /.form-group -->
+
+
+            <!------------- fin col ------------>
+          </div>
+            <!-- /.form-group -->
+
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+            <div class="form-group">
+              <label>Date de la Visite:</label>
+
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="datepicker">
+              </div>
+              <!-- /.input group -->
+            </div>
+
+            <div class="form-group">
+              <label for="visiteurs">Visiteurs</label>
+              <input type="text" class="form-control" id="visiteurs" placeholder="Entrer les visiteurs">
+            </div>
+
+            <div class="form-group">
+              <label for="agentVisite">Agents Visités</label>
+              <input type="text" class="form-control" id="agentvisite" placeholder="Entrer les agents visités">
+            </div>
+
+            <div class="form-group">
+              <label for="fonction">Fonctions</label>
+              <input type="text" class="form-control" id="fonction" placeholder="Entrer les fonctions">
+            </div>
+
+
+
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.box-body -->
+       <!---------------------------------------- Fin Bloc 1 --------------------------------------------->
+       <!----------------------------------------Debut Bloc 2 ---------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------->
+
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Organisation du chantier</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <div class="form-group">
+              <label>Ordre de travail ou de service : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+            <label>Permis de travail : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+          </div>
+
+            <div class="form-group">
+              <label>Attestation de consignation : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+              <label>Titre d'habilitation : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label>DICT : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Plan de prévention général : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <!-- /.form-group -->
+
+          <!-- /.form-group -->
+          <!------------- fin col ------------>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+            <div class="form-group">
+              <label>Installation du chantier : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Base de vie : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Aire de stockage : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+        </div>
+
+
+            <div class="form-group">
+              <label>Plan de circulation : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Distance de sécurité : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Bassin de rétention : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.box-body -->
+    <!---------------------------------------------------Fin Bloc 2 ---------------------------------->
+    <!----------------------------------------------------Debut Bloc 3 ---------------------------------------->
+    <!-------------------------------------------------------------------------------------------------------->
+
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Balisage et signalisation</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <div class="form-group">
+              <label>Signalisation de jour : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Signalisation de nuit : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>Etat des panneaux : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+              <label>Ordre des panneaux : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label>Chantier clôturé : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Chantier balisé en dur : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <!-- /.form-group -->
+
+            <!-- /.form-group -->
+            <!------------- fin col ------------>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+            <div class="form-group">
+              <label>Moyens de propreté(savon,eau,...) : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Nuisances (bruuit,poussière...) : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Evacuation des déblais : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Propreté de véhicule : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Registre d'incident : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!--------------------------------------------------- Fin Bloc 3 ------------------------------------------------------->
+    <!---------------------------------------------------Debut Bloc 4 ------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------------------------------->
+
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Attitude en cas d'urgence</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <div class="form-group">
+              <label>Numéros utiles : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Consignes d'évacuation : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>Liste des sauveteurs et secouristes au travail : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+            <!-- /.form-group -->
+
+            <!-- /.form-group -->
+            <!------------- fin col ------------>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+            <div class="form-group">
+              <label>Connaissance de l'attitude en cas d'urgence : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Boite à pharmacie : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Moyens d'extinction du feu : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!------------------------------------------------ Fin bloc 4 ------------------------------------------>
+    <!-------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------ Début bloc 5 ------------------------------------------>
+
+
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">EPC/EPI et outillage</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <div class="form-group">
+              <label>Utilisation des EPC : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Port des EPI : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>Contrôle réglementaire(extincteur,engin...) : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+            <!-- /.form-group -->
+
+            <!-- /.form-group -->
+            <!------------- fin col ------------>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+            <div class="form-group">
+              <label>Outillage conforme : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Gilet et tenue haute visibilité : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Outillage rangé : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+
+   <!------------------------------------------------ fin bloc 5 ------------------------------------->
+    <!---------------------------------------------- debut bloc 6 ------------------------------------->
+    <!---------------------------------------------------------------------------------------------------->
+
+
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Règles qui sauvent </h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <div class="form-group">
+              <label>Affichage des RQS : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Sensiblisation aux RQS : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>connaissance des RQS : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>Convaincus par le rôle des RQS : </label>
+
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+            <label>Je ne passe pas sous une charge : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option selected="selected">OUI</option>
+              <option>NON</option>
+              <option>NON CONCERNE</option>
+
+            </select>
+
+          </div>
+
+            <div class="form-group">
+              <label>Je me positionne en dehors de la trajectoire des véhicules : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group">
+              <label>J'accroche mon harnais quand je travaille en hauteur : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <!-- /.form-group -->
+
+            <!-- /.form-group -->
+            <!------------- fin col ------------>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+            <div class="form-group">
+              <label>Je descends dans la tranchée la protection est mise en place : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Je m'assure que l'atmosphère est controlée avant d'entrer : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Je m'assure qu'il n'y a pas le risque incendie : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Je verifie l'absence d'énergie : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Je ne manipule pas le mobile en conduisant : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Je ne conduis pas sous l'emprise:alcool/autre : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label>J'avertis,je ralentis et je vérifie en conduisant : </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+                <option>NON CONCERNE</option>
+
+              </select>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+
+   <!-----------------------------------------------Fin Bloc 6--------------------------------------------------->
+    <!-------------------------------------------- Observation et actions ----------------------------------->
+
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Observations et actions</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Observations :</label>
+                <textarea class="form-control" rows="3" placeholder="Enter les observations"></textarea>
+
+
+            <div class="form-group">
+              <label for="type">Type</label>
+              <input type="text" class="form-control" id="type" placeholder="Entrer le type ">
+            </div>
+            </div>
+
+            <!-- /.form-group -->
+
+
+            <!------------- fin col ------------>
+          </div>
+          <!-- /.form-group -->
+
+          <!-- /.col -->
+          <div class="col-md-6">
+
+            <!-- /.form-group -->
+
+
+            <div class="form-group">
+              <label>Actions actées</label>
+              <textarea class="form-control" rows="3" placeholder="Enter les actions"></textarea>
+            </div>
+
+
+            <div class="form-group">
+              <label>Correction immediate: </label>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">OUI</option>
+                <option>NON</option>
+
+              </select>
+            </div>
+
+
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+
+    <div class="box-body">
+      <div class="row">
+    <div class="col-md-6">
+
+    <button type="button" class="btn btn-block btn-primary btn-lg">Enregistrer</button>
+    </div>
+        <div class="col-md-6">
+
+          <button type="button" class="btn btn-block btn-primary btn-lg">Valider</button>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+  </div>

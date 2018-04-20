@@ -1,0 +1,161 @@
+<div class="container">
+  <section class="content-header">
+    <h1>
+      Chantier
+      <small>Nouveau</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a routerLink="/home"><i class="fa fa-dashboard"></i>Home</a></li>
+      <li><a routerLink="/nouveauChantier">Nouveau Chantier</a></li>
+    </ol>
+  </section>
+
+  <div class="container spacer">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Chantier</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="container spacer">
+
+        <div class="panel panel-primary" *ngIf="mode==1">
+          <div class="panel-heading"><strong>Nouveau Chantier : </strong></div>
+          <div class="panel-body">
+            <div class="box-body">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="libelle_Chantier"><strong>Nom du chantier : </strong></label>
+                    <input type="text"  class="form-control" [(ngModel)]="chantier.libelle_chantier"  id="libelle_Chantier" placeholder="Entrer le nom du chantier">
+                  </div>
+                  <div class="form-group">
+                    <label for="desc_chantier"><strong>Description du chantier : </strong></label>
+                    <input type="text"  class="form-control" [(ngModel)]="chantier.desc_chantier" id="desc_chantier" placeholder="Entrer la description du chantier">
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Type Chantier : </strong></label>
+                    <select [(ngModel)]="chantier.typeChantier.id_type">
+                      <option *ngFor="let t of typeChantiers"  [value]="t.id_type" >{{t.libelle_type}}</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Type Chantier : </strong></label>
+                    <select [(ngModel)]="chantier.service.id_service">
+                      <option *ngFor="let s of Services"  [value]="s.id_service">{{s.libelle}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label><strong>Date ordre du chantier : </strong> </label>
+
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" [(ngModel)]="chantier.date_ordre" class="form-control pull-right" id="datepicker">
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Date Fin du chantier : </strong></label>
+
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date"  [(ngModel)]="chantier.date_fin" class="form-control pull-right" id="datepicker2">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Entreprise Sous traitante : </strong></label>
+                    <select [(ngModel)]="chantier.entrepriseSt.id_entrep">
+                      <option *ngFor="let c of EntrepriseSt" [value]="c.id_entrep" >{{c.nom}}</option>
+                    </select>
+                  </div>
+
+
+
+                  <button (click)="saveChantier()" class="btn ptn-primary">Save</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-primary" *ngIf="mode==2">
+          <div class="panel-heading">Confirmation</div>
+          <div class="panel-body">
+            <div class="box-body">
+
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <label><strong>Nom du chantier : </strong></label>
+                    <label>{{chantier.libelle_chantier}}</label>
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Description du chantier : </strong></label>
+                    <label>{{chantier.desc_chantier}}</label>
+                  </div>
+
+                  <div class="form-group">
+                      <label><strong>Type Chantier : </strong></label>
+                      <label>{{chantier.typeChantier.idTypeChantier}}</label>
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Type Chantier : </strong></label>
+                    <label>{{chantier.service.libelle}}</label>
+                  </div>
+                </div>
+
+              <div class="col-md-6">
+                    <div class="form-group">
+                      <label><strong>Date ordre du chantier : </strong> </label>
+                      <label>{{chantier.date_ordre}}</label>
+                    </div>
+
+                    <div class="form-group">
+                      <label><strong>Date Fin du chantier : </strong></label>
+                      <label>{{chantier.date_fin}}</label>
+                  </div>
+
+                    <div class="form-group">
+                    <label><strong>Entreprise Sous traitante : </strong></label>
+                    <label>{{chantier.entrepriseSt.nom}}</label>
+                  </div>
+
+                  <button (click)="mode=1" class="btn ptn-primary">Nouveau Chantier</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
