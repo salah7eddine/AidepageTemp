@@ -5,7 +5,7 @@ import {Service} from "./Service.model";
 import {TypeChantier} from "./TypeChantier.model";
 
 export class Chantier{
-  idChantier:any=null;
+  id_chantier:number=null;
   libelle_chantier:string="";
   desc_chantier:string="";
   date_ordre:Date;

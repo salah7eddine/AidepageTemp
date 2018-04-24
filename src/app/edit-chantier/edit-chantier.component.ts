@@ -16,27 +16,22 @@ export class EditChantierComponent implements OnInit {
 
   mode:number=1;
   public chantier:Chantier=new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier() );
-  id:number=0;
+  id:any=0;
   typeChantiers:any=null;
   EntrepriseSt:any=null;
   Services:any=null;
 
   constructor(public activatedRoute:ActivatedRoute,public chantierService:ChantierService,public router:Router) {
 
-    this.id=Number(activatedRoute.snapshot.params['id']);
-
+    this.id=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
 
-    console.log("id : "+this.id);
-    console.log("-----------------///-------------"+this.id);
 
     this.chantierService.getChantier(this.id).subscribe(data=>{
-        this.chantier=data;
-      console.log("-----------------///--Chantier-----------"+this.chantier);
 
-
+      this.chantier=data;
       console.log(this.chantier);
     },err=>{
       console.log(err);
@@ -65,11 +60,9 @@ export class EditChantierComponent implements OnInit {
   }
 
   updateChantier(){
-      console.log("---------------update-----------------"+this.id);
-      console.log("----------------update ----------------"+this.chantier.idChantier);
     this.chantierService.updateChantier(this.chantier).subscribe(data=>{
         alert("Mise à jour effectuée");
-      //this.router.navigate(['listChantiers']);
+        this.router.navigate(['listChantiers']);
     },err=>{
       console.log(err);
       alert("Problème ");

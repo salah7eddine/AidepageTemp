@@ -62,7 +62,7 @@ export class ListChantiersComponent implements OnInit {
     console.log(confirm);
 
     if(confirm==true){
-      this.chantierservice.deleteChantier(c.idChantier).subscribe(data=>{
+      this.chantierservice.deleteChantier(c.id_chantier).subscribe(data=>{
         this.pageChantiers.content.splice(
           this.pageChantiers.content.indexof(c),1
         );

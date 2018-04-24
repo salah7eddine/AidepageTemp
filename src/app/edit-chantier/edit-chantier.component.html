@@ -22,15 +22,15 @@
       <div class="row" >
         <div class="container spacer">
 
-          <div class="panel panel-primary" *ngIf="mode==1">
-            <div class="panel-heading"><strong>Nouveau Chantier : </strong></div>
+          <div class="panel panel-primary">
+            <div class="panel-heading"><strong>Modifier le Chantier :  </strong></div>
             <div class="panel-body">
               <div class="box-body">
                 <div class="row">
 
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="libelle_Chantier" value="chantier.idChantier"><strong>Id du chantier :{{chantier.idChantier}} </strong></label>
+                      <label for="libelle_Chantier" value="chantier.idChantier"><strong>Id du chantier :{{id}} </strong></label>
                     </div>
                   <div class="col-md-6">
                     <div class="form-group">
@@ -85,7 +85,7 @@
                     <div class="form-group">
                       <label><strong>Entreprise Sous traitante : </strong></label>
                       <select [(ngModel)]="chantier.entrepriseSt.id_entrep">
-                        <option *ngFor="let c of EntrepriseSt"  [value]="c.id_entrep">{{c.nom}}</option>
+                        <option *ngFor="let en of EntrepriseSt"  [value]="en.id_entrep">{{en.nom}}</option>
                       </select>
                     </div>
 
@@ -99,58 +99,6 @@
               </div>
             </div>
           </div>
-          <div class="panel panel-primary" *ngIf="mode==2">
-            <div class="panel-heading">Confirmation</div>
-            <div class="panel-body">
-              <div class="box-body">
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label><strong>Nom du chantier : </strong></label>
-                    <label>{{chantier.libelle_chantier}}</label>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Description du chantier : </strong></label>
-                    <label>{{chantier.desc_chantier}}</label>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Type Chantier : </strong></label>
-                    <label>{{chantier.typeChantier.idTypeChantier}}</label>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Type Chantier : </strong></label>
-                    <label>{{chantier.service.libelle}}</label>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label><strong>Date ordre du chantier : </strong> </label>
-                    <label>{{chantier.date_ordre}}</label>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Date Fin du chantier : </strong></label>
-                    <label>{{chantier.date_fin}}</label>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Entreprise Sous traitante : </strong></label>
-                    <label>{{chantier.entrepriseSt.nom}}</label>
-                  </div>
-
-                  <button (click)="mode=1" class="btn ptn-primary">Nouveau Chantier</button>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
 
       </div>
 
