@@ -8,8 +8,8 @@ export class Chantier{
   idChantier:any=null;
   libelle_chantier:string="";
   desc_chantier:string="";
-  //date_ordre:Date;
-  //date_fin:Date;
+  date_ordre:Date;
+  date_fin:Date;
 
 
   entrepriseSt:EntrepriseSt=null ;

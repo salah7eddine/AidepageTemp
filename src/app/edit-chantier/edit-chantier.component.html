@@ -30,6 +30,10 @@
 
                   <div class="col-md-6">
                     <div class="form-group">
+                      <label for="libelle_Chantier" value="chantier.idChantier"><strong>Id du chantier :{{chantier.idChantier}} </strong></label>
+                    </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
                       <label for="libelle_Chantier"><strong>Nom du chantier : </strong></label>
                       <input type="text"  class="form-control" [(ngModel)]="chantier.libelle_chantier"  id="libelle_Chantier" placeholder="Entrer le nom du chantier">
                     </div>
@@ -46,7 +50,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label><strong>Type Chantier : </strong></label>
+                      <label><strong>Services : </strong></label>
                       <select [(ngModel)]="chantier.service.id_service">
                         <option *ngFor="let s of Services"  [value]="s.id_service">{{s.libelle}}</option>
                       </select>
@@ -87,7 +91,7 @@
 
 
 
-                    <button (click)="updateChantier()" class="btn ptn-primary">Save</button>
+                    <button (click)="updateChantier()" class="btn ptn-primary">Modifier</button>
 
                   </div>
 

@@ -19,6 +19,9 @@ export class ChantierService {
   }
 
 
+  getChantier(id:number){return this.http.get("http://localhost:8080/chantier/"+id).map(resp=>resp.json());}
+
+
   /*
    async getTypeChanties(){return
    let result= await this.http.get("http://localhost:8080/typeChantier");}
@@ -35,4 +38,9 @@ export class ChantierService {
   getServices(){return this.http.get("http://localhost:8080/services").map(resp=>resp.json());}
 
   saveChantier(chantier:Chantier){return this.http.post("http://localhost:8080/chantier",chantier).map(resp=>resp.json());}
+
+  updateChantier(chantier:Chantier){return this.http.put("http://localhost:8080/chantier/"+chantier.idChantier,chantier).map(resp=>resp.json());}
+
+  deleteChantier(id:number){return this.http.delete("http://localhost:8080/chantier/"+id).map(resp=>resp.json());}
+
 }

@@ -40,14 +40,14 @@
 
                   <div class="form-group">
                     <label><strong>Type Chantier : </strong></label>
-                    <select [(ngModel)]="chantier.typeChantier.id_type">
+                    <select class="form-control select2" style="width: 100%;" [(ngModel)]="chantier.typeChantier.id_type">
                       <option *ngFor="let t of typeChantiers"  [value]="t.id_type" >{{t.libelle_type}}</option>
                     </select>
                   </div>
 
                   <div class="form-group">
-                    <label><strong>Type Chantier : </strong></label>
-                    <select [(ngModel)]="chantier.service.id_service">
+                    <label><strong>Services : </strong></label>
+                    <select class="form-control select2" style="width: 100%;" [(ngModel)]="chantier.service.id_service">
                       <option *ngFor="let s of Services"  [value]="s.id_service">{{s.libelle}}</option>
                     </select>
                   </div>
@@ -78,7 +78,7 @@
 
                   <div class="form-group">
                     <label><strong>Entreprise Sous traitante : </strong></label>
-                    <select [(ngModel)]="chantier.entrepriseSt.id_entrep">
+                    <select class="form-control select2" style="width: 100%;" [(ngModel)]="chantier.entrepriseSt.id_entrep">
                       <option *ngFor="let c of EntrepriseSt" [value]="c.id_entrep" >{{c.nom}}</option>
                     </select>
                   </div>

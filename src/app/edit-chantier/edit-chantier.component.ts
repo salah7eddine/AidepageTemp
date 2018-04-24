@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Chantier} from "../../model/Chantier.model.";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {EntrepriseSt} from "../../model/EntrepriseSt.model";
 import {Entitie} from "../../model/Entitie.model";
 import {TypeChantier} from "../../model/TypeChantier.model";
 import {Service} from "../../model/Service.model";
+import {ChantierService} from "../../services/Chantier.service";
 
 @Component({
   selector: 'app-edit-chantier',
@@ -14,18 +15,65 @@ import {Service} from "../../model/Service.model";
 export class EditChantierComponent implements OnInit {
 
   mode:number=1;
-  chantier:Chantier=new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier() );
-  constructor(public activatedRoute:ActivatedRoute) {
-    console.log("----------------------------");
-    console.log(activatedRoute.snapshot.params['id']);
-    console.log("----------------------------");
+  public chantier:Chantier=new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier() );
+  id:number=0;
+  typeChantiers:any=null;
+  EntrepriseSt:any=null;
+  Services:any=null;
+
+  constructor(public activatedRoute:ActivatedRoute,public chantierService:ChantierService,public router:Router) {
+
+    this.id=Number(activatedRoute.snapshot.params['id']);
 
   }
 
   ngOnInit() {
+
+    console.log("id : "+this.id);
+    console.log("-----------------///-------------"+this.id);
+
+    this.chantierService.getChantier(this.id).subscribe(data=>{
+        this.chantier=data;
+      console.log("-----------------///--Chantier-----------"+this.chantier);
+
+
+      console.log(this.chantier);
+    },err=>{
+      console.log(err);
+    });
+
+
+    this.chantierService.getTypeChanties().subscribe(data=>{
+      this.typeChantiers=data;
+    },err=>{
+      console.log(err);
+    });
+
+    this.chantierService.getEntreprises().subscribe(data=>{
+      this.EntrepriseSt=data;
+    },err=>{
+      console.log(err);
+    });
+
+    this.chantierService.getServices().subscribe(data=>{
+      this.Services=data;
+    },err=>{
+      console.log(err);
+    })
+
+
   }
 
   updateChantier(){
+      console.log("---------------update-----------------"+this.id);
+      console.log("----------------update ----------------"+this.chantier.idChantier);
+    this.chantierService.updateChantier(this.chantier).subscribe(data=>{
+        alert("Mise à jour effectuée");
+      //this.router.navigate(['listChantiers']);
+    },err=>{
+      console.log(err);
+      alert("Problème ");
+    })
 
   }
 
