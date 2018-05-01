@@ -1,5 +1,5 @@
 
-  <div class="container">
+<div>
   <section class="content-header">
     <h1>
       Compte Rendu
@@ -11,895 +11,756 @@
     </ol>
   </section>
 
-    <div class="container spacer">
 
+  <!---------------------------- Debut du Bloc 1 ------------------------------->
+  <!-- SELECT2 EXAMPLE -->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Informations sur le chantier</h3>
 
-    <!---------------------------- Debut du Bloc 1 ------------------------------->
-    <!-- SELECT2 EXAMPLE -->
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">Compte Rendu</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
       </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="adresseChantier">Adresse Chantier</label>
-              <input type="text" class="form-control" id="adresseChantier" placeholder="Entrer l'adresse chantier">
-            </div>
-            <div class="form-group">
-              <label for="natureTr">Nature des travaux</label>
-              <input type="text" class="form-control" id="natureTr" placeholder="Entrer le type du chantier">
-            </div>
-
-
-              <div class="form-group">
-                <div> <label>Type Chantier</label></div>
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="typeChantier" id="optionsRadios1" value="Electricite" checked>
-                    Electricité
-                  </label>
-
-                  <label>
-                    <input type="radio" name="typeChantier" id="optionsRadios2" value=" Eau">
-                    Eau
-                  </label>
-
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="Assainissement">
-                    Assainissement
-                  </label>
-
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="ECP">
-                    ECP
-                  </label>
-
-                </div>
-              </div>
-
-
-            <div class="form-group">
-              <label for="entreprise">Entreprise sous traitante</label>
-              <input type="text" class="form-control" id="entreprise" placeholder="Entrer l'entreprise sous traitante">
-            </div>
-
-
-
-            <!-- /.form-group -->
-
-
-            <!------------- fin col ------------>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="adresseChantier">Adresse Chantier</label>
+            <input type="text" class="form-control" id="adresseChantier"  placeholder="Entrer l'adresse chantier">
           </div>
-            <!-- /.form-group -->
-
-          <!-- /.col -->
-          <div class="col-md-6">
-
-            <!-- /.form-group -->
-            <div class="form-group">
-              <label>Date de la Visite:</label>
-
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control pull-right" id="datepicker">
-              </div>
-              <!-- /.input group -->
-            </div>
-
-            <div class="form-group">
-              <label for="visiteurs">Visiteurs</label>
-              <input type="text" class="form-control" id="visiteurs" placeholder="Entrer les visiteurs">
-            </div>
-
-            <div class="form-group">
-              <label for="agentVisite">Agents Visités</label>
-              <input type="text" class="form-control" id="agentvisite" placeholder="Entrer les agents visités">
-            </div>
-
-            <div class="form-group">
-              <label for="fonction">Fonctions</label>
-              <input type="text" class="form-control" id="fonction" placeholder="Entrer les fonctions">
-            </div>
-
-
-
-            <!-- /.form-group -->
+          <div class="form-group">
+            <label for="natureTr">Nature des travaux</label>
+            <input type="text" class="form-control" id="natureTr" placeholder="Entrer le type du chantier">
           </div>
-          <!-- /.col -->
+
+
+          <div class="form-group">
+            <label><strong>Type Chantier : </strong></label>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="visiteHS.chantier.typeChantier.id_type">
+              <option *ngFor="let t of typeChantiers"  [value]="t.id_type" >{{t.libelle_type}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><strong>Entreprise Sous traitante : </strong></label>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="visiteHS.chantier.entrepriseSt.id_entrep">
+              <option *ngFor="let c of EntrepriseSt" [value]="c.id_entrep" >{{c.nom}}</option>
+            </select>
+          </div>
+
+
+
+          <!-- /.form-group -->
+
+
+          <!------------- fin col ------------>
         </div>
-      </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.box-body -->
-       <!---------------------------------------- Fin Bloc 1 --------------------------------------------->
-       <!----------------------------------------Debut Bloc 2 ---------------------------------------------->
-    <!--------------------------------------------------------------------------------------------------------->
+        <!-- /.form-group -->
 
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">Organisation du chantier</h3>
+        <!-- /.col -->
+        <div class="col-md-6">
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label>Date de la Visite:</label>
 
-
-            <div class="form-group">
-              <label>Ordre de travail ou de service : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="datepicker">
             </div>
+            <!-- /.input group -->
+          </div>
+
+          <div class="form-group">
+            <label for="visiteurs">Visiteurs</label>
+            <input type="text" class="form-control" id="visiteurs" placeholder="Entrer les visiteurs">
+          </div>
+
+          <div class="form-group">
+            <label for="agentVisite">Agents Visités</label>
+            <input type="text" class="form-control" id="agentvisite" placeholder="Entrer les agents visités">
+          </div>
+
+          <div class="form-group">
+            <label for="fonction">Fonctions</label>
+            <input type="text" class="form-control" id="fonction" placeholder="Entrer les fonctions">
+          </div>
 
 
-            <div class="form-group">
+
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.box-body -->
+  <!---------------------------------------- Fin Bloc 1 --------------------------------------------->
+  <!----------------------------------------Debut Bloc 2 ---------------------------------------------->
+  <!--------------------------------------------------------------------------------------------------------->
+
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Organisation du chantier</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Document d'accés ou de chantier -->
+
+          <div class="form-group">
+            <label>Ordre de travail ou de service : </label>
+            <select class="form-control select2"  style="width: 100%;"  ><!-- [(ngModule)]="documentChantier.ordreTravail" -->
+              <option *ngFor="let r of reponse" [value]="r.response">{{r.response}}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
             <label>Permis de travail : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
+            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.documentChantier.permisTravail"-->
+              <option *ngFor="let r1 of response" [value]="r1.response">{{r1.response}}</option>
+            </select>
           </div>
 
-            <div class="form-group">
-              <label>Attestation de consignation : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
+          <div class="form-group">
+            <label>Attestation de consignation : </label>
+            <select class="form-control select2"style="width: 100%;"><!--  [(ngModule)]="visiteHS.documentChantier.attestationConsignation" -->
+              <option *ngFor="let r2 of response" [value]="r2.response">{{r2.response}}</option>
+            </select>
+          </div>
 
 
-            <div class="form-group">
-              <label>Titre d'habilitation : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
+          <div class="form-group">
+            <label>Titre d'habilitation : </label>
+            <select class="form-control select2" style="width: 100%;"><!--  [(ngModule)]="visiteHS.documentChantier.titreHabilitation"-->
+              <option *ngFor="let r3 of response" [value]="r3.idresponse">{{r3.response}}</option>
+            </select>
+          </div>
 
 
+          <div class="form-group">
+            <label>DICT : </label>
+            <select class="form-control select2" style="width: 100%;"><!--   [(ngModule)]="visiteHS.documentChantier.dict" -->
+              <option *ngFor="let r4 of response" [value]="r4.response">{{r4.response}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Plan de prévention général : </label>
+            <select class="form-control select2" style="width: 100%;"><!-- [(ngModule)]="visiteHS.documentChantier.planPrevention" -->
+              <option *ngFor="let r5 of response" [value]="r5.idresponse">{{r5.response}}</option>
+            </select>
+          </div>
 
 
-            <div class="form-group">
-              <label>DICT : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Plan de prévention général : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <!-- /.form-group -->
+          <!-- /.form-group -->
 
           <!-- /.form-group -->
           <!------------- fin col ------------>
-          </div>
-          <!-- /.col -->
-          <div class="col-md-6">
-
-            <!-- /.form-group -->
-            <div class="form-group">
-              <label>Installation du chantier : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Base de vie : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Aire de stockage : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
         </div>
+        <!-- /.col -->
+        <div class="col-md-6">
 
-
-            <div class="form-group">
-              <label>Plan de circulation : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Distance de sécurité : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Bassin de rétention : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-            <!-- /.form-group -->
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label>Installation du chantier : </label>
+            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.installationChantier"-->
+              <option *ngFor="let r6 of response" [value]="r6.idresponse">{{r6.response}}</option>
+            </select>
           </div>
-          <!-- /.col -->
+
+          <div class="form-group">
+            <label>Base de vie : </label>
+            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.baseVie"-->
+              <option *ngFor="let r7 of response" [value]="r7.idresponse">{{r7.response}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Aire de stockage : </label>
+            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.aireStockage"-->
+              <option *ngFor="let r8 of response" [value]="r8.idresponse">{{r8.response}}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Plan de circulation : </label>
+            <select class="form-control select2"  style="width: 100%;"><!--[(ngModule)]="visiteHS.amenagementChantier.planCirculation" -->
+              <option *ngFor="let r9 of response" [value]="r9.idresponse">{{r9.response}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Distance de sécurité : </label>
+            <select class="form-control select2" style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.distanceSecurite" -->
+              <option *ngFor="let r10 of response" [value]="r10.idresponse">{{r10.response}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Bassin de rétention : </label>
+            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.bassinRetention"-->
+              <option *ngFor="let r11 of response" [value]="r11.idresponse">{{r11.response}}</option>
+
+            </select>
+          </div>
+          <!-- /.form-group -->
         </div>
+        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.box-body -->
-    <!---------------------------------------------------Fin Bloc 2 ---------------------------------->
-    <!----------------------------------------------------Debut Bloc 3 ---------------------------------------->
-    <!-------------------------------------------------------------------------------------------------------->
+    <!-- /.row -->
+  </div>
+  <!-- /.box-body -->
+  <!---------------------------------------------------Fin Bloc 2 ---------------------------------->
+  <!----------------------------------------------------Debut Bloc 3 ---------------------------------------->
+  <!-------------------------------------------------------------------------------------------------------->
 
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">Balisage et signalisation</h3>
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Balisage et signalisation</h3>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
       </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
-
-
-            <div class="form-group">
-              <label>Signalisation de jour : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <div class="form-group">
-              <label>Signalisation de nuit : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>Etat des panneaux : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-              <label>Ordre des panneaux : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-
-
-            <div class="form-group">
-              <label>Chantier clôturé : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Chantier balisé en dur : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <!-- /.form-group -->
-
-            <!-- /.form-group -->
-            <!------------- fin col ------------>
-          </div>
-          <!-- /.col -->
-          <div class="col-md-6">
-
-            <!-- /.form-group -->
-            <div class="form-group">
-              <label>Moyens de propreté(savon,eau,...) : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Nuisances (bruuit,poussière...) : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Evacuation des déblais : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <div class="form-group">
-              <label>Propreté de véhicule : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Registre d'incident : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-        </div>
-      </div>
-      <!-- /.row -->
     </div>
-    <!--------------------------------------------------- Fin Bloc 3 ------------------------------------------------------->
-    <!---------------------------------------------------Debut Bloc 4 ------------------------------------------------------->
-    <!---------------------------------------------------------------------------------------------------------------------->
-
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">Attitude en cas d'urgence</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
 
 
-            <div class="form-group">
-              <label>Numéros utiles : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <div class="form-group">
-              <label>Consignes d'évacuation : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>Liste des sauveteurs et secouristes au travail : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-            <!-- /.form-group -->
-
-            <!-- /.form-group -->
-            <!------------- fin col ------------>
-          </div>
-          <!-- /.col -->
-          <div class="col-md-6">
-
-            <!-- /.form-group -->
-            <div class="form-group">
-              <label>Connaissance de l'attitude en cas d'urgence : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Boite à pharmacie : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Moyens d'extinction du feu : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-        </div>
-      </div>
-      <!-- /.row -->
-    </div>
-    <!------------------------------------------------ Fin bloc 4 ------------------------------------------>
-    <!-------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------ Début bloc 5 ------------------------------------------>
-
-
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">EPC/EPI et outillage</h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
-
-
-            <div class="form-group">
-              <label>Utilisation des EPC : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <div class="form-group">
-              <label>Port des EPI : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>Contrôle réglementaire(extincteur,engin...) : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-            <!-- /.form-group -->
-
-            <!-- /.form-group -->
-            <!------------- fin col ------------>
-          </div>
-          <!-- /.col -->
-          <div class="col-md-6">
-
-            <!-- /.form-group -->
-            <div class="form-group">
-              <label>Outillage conforme : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Gilet et tenue haute visibilité : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Outillage rangé : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
-        </div>
-      </div>
-      <!-- /.row -->
-    </div>
-
-   <!------------------------------------------------ fin bloc 5 ------------------------------------->
-    <!---------------------------------------------- debut bloc 6 ------------------------------------->
-    <!---------------------------------------------------------------------------------------------------->
-
-
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">Règles qui sauvent </h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
-
-
-            <div class="form-group">
-              <label>Affichage des RQS : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <div class="form-group">
-              <label>Sensiblisation aux RQS : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>connaissance des RQS : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>Convaincus par le rôle des RQS : </label>
-
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-            <label>Je ne passe pas sous une charge : </label>
+          <div class="form-group">
+            <label>Signalisation de jour : </label>
             <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">OUI</option>
-              <option>NON</option>
-              <option>NON CONCERNE</option>
+              <option *ngFor="let r12 of response" [value]="r12.idresponse">{{r12.response}}</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Signalisation de nuit : </label>
+
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r13 of response" [value]="r13.idresponse">{{r13.response}}</option>
 
             </select>
 
           </div>
 
-            <div class="form-group">
-              <label>Je me positionne en dehors de la trajectoire des véhicules : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
+          <div class="form-group">
+            <label>Etat des panneaux : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r14 of response" [value]="r14.idresponse">{{r14.response}}</option>
 
-              </select>
+            </select>
 
-            </div>
-
-            <div class="form-group">
-              <label>J'accroche mon harnais quand je travaille en hauteur : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-
-            <!-- /.form-group -->
-
-            <!-- /.form-group -->
-            <!------------- fin col ------------>
           </div>
-          <!-- /.col -->
-          <div class="col-md-6">
-
-            <!-- /.form-group -->
-            <div class="form-group">
-              <label>Je descends dans la tranchée la protection est mise en place : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
 
 
-            <div class="form-group">
-              <label>Je m'assure que l'atmosphère est controlée avant d'entrer : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
+          <div class="form-group">
+            <label>Ordre des panneaux : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r15 of response" [value]="r15.idresponse">{{r15.response}}</option>
 
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Je m'assure qu'il n'y a pas le risque incendie : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Je verifie l'absence d'énergie : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Je ne manipule pas le mobile en conduisant : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Je ne conduis pas sous l'emprise:alcool/autre : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-            <div class="form-group">
-              <label>J'avertis,je ralentis et je vérifie en conduisant : </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-                <option>NON CONCERNE</option>
-
-              </select>
-            </div>
-            <!-- /.form-group -->
+            </select>
           </div>
-          <!-- /.col -->
+
+
+
+
+          <div class="form-group">
+            <label>Chantier clôturé : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r16 of response" [value]="r16.idresponse">{{r16.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Chantier balisé en dur : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r17 of response" [value]="r17.idresponse">{{r17.response}}</option>
+
+            </select>
+          </div>
+
+
+          <!-- /.form-group -->
+
+          <!-- /.form-group -->
+          <!------------- fin col ------------>
         </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label>Moyens de propreté(savon,eau,...) : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r18 of response" [value]="r18.idresponse">{{r18.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Nuisances (bruuit,poussière...) : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r19 of response" [value]="r19.idresponse">{{r19.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Evacuation des déblais : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r20 of response" [value]="r20.idresponse">{{r20.response}}</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Propreté de véhicule : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r21 of response" [value]="r21.idresponse">{{r21.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Registre d'incident : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r22 of response" [value]="r22.idresponse">{{r22.response}}</option>
+
+            </select>
+          </div>
+
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
+    <!-- /.row -->
+  </div>
+  <!--------------------------------------------------- Fin Bloc 3 ------------------------------------------------------->
+  <!---------------------------------------------------Debut Bloc 4 ------------------------------------------------------->
+  <!---------------------------------------------------------------------------------------------------------------------->
 
-   <!-----------------------------------------------Fin Bloc 6--------------------------------------------------->
-    <!-------------------------------------------- Observation et actions ----------------------------------->
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Attitude en cas d'urgence</h3>
 
-    <div class="box box-default">
-      <div class="box-header with-border">
-        <h3 class="box-title">Observations et actions</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
       </div>
-      <!-- /.box-header -->
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-                <label>Observations :</label>
-                <textarea class="form-control" rows="3" placeholder="Enter les observations"></textarea>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+
+
+          <div class="form-group">
+            <label>Numéros utiles : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r23 of response" [value]="r23.idresponse">{{r23.response}}</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Consignes d'évacuation : </label>
+
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r24 of response" [value]="r24.idresponse">{{r24.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>Liste des sauveteurs et secouristes au travail : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r25 of response" [value]="r25.idresponse">{{r25.response}}</option>
+
+            </select>
+
+          </div>
+          <!-- /.form-group -->
+
+          <!-- /.form-group -->
+          <!------------- fin col ------------>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label>Connaissance de l'attitude en cas d'urgence : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r26 of response" [value]="r26.idresponse">{{r26.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Boite à pharmacie : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r27 of response" [value]="r27.idresponse">{{r27.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Moyens d'extinction du feu : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r28 of response" [value]="r28.idresponse">{{r28.response}}</option>
+
+            </select>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!------------------------------------------------ Fin bloc 4 ------------------------------------------>
+  <!-------------------------------------------------------------------------------------------------------->
+  <!------------------------------------------------ Début bloc 5 ------------------------------------------>
+
+
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">EPC/EPI et outillage</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+
+
+          <div class="form-group">
+            <label>Utilisation des EPC : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r29 of response" [value]="r29.idresponse">{{r29.response}}</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Port des EPI : </label>
+
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r30 of response" [value]="r30.idresponse">{{r30.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>Contrôle réglementaire(extincteur,engin...) : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r31 of response" [value]="r31.idresponse">{{r31.response}}</option>
+
+            </select>
+
+          </div>
+          <!-- /.form-group -->
+
+          <!-- /.form-group -->
+          <!------------- fin col ------------>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label>Outillage conforme : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r32 of response" [value]="r32.idresponse">{{r32.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Gilet et tenue haute visibilité : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r33 of response" [value]="r33.idresponse">{{r33.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Outillage rangé : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r34 of response" [value]="r34.idresponse">{{r34.response}}</option>
+
+            </select>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <!------------------------------------------------ fin bloc 5 ------------------------------------->
+  <!---------------------------------------------- debut bloc 6 ------------------------------------->
+  <!---------------------------------------------------------------------------------------------------->
+
+
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Règles qui sauvent </h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+
+
+          <div class="form-group">
+            <label>Affichage des RQS : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r35 of response" [value]="r35.idresponse">{{r35.response}}</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Sensiblisation aux RQS : </label>
+
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r36 of response" [value]="r36.idresponse">{{r36.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>connaissance des RQS : </label>
+
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r37 of response" [value]="r37.idresponse">{{r37.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>Convaincus par le rôle des RQS : </label>
+
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r38 of response" [value]="r38.idresponse">{{r38.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>Je ne passe pas sous une charge : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r39 of response" [value]="r39.idresponse">{{r39.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>Je me positionne en dehors de la trajectoire des véhicules : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r40 of response" [value]="r40.idresponse">{{r40.response}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label>J'accroche mon harnais quand je travaille en hauteur : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r41 of response" [value]="r41.idresponse">{{r41.response}}</option>
+
+            </select>
+          </div>
+
+
+          <!-- /.form-group -->
+
+          <!-- /.form-group -->
+          <!------------- fin col ------------>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+
+          <!-- /.form-group -->
+          <div class="form-group">
+            <label>Je descends dans la tranchée la protection est mise en place : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r42 of response" [value]="r42.idresponse">{{r42.response}}</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label>Je m'assure que l'atmosphère est controlée avant d'entrer : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r43 of response" [value]="r43.idresponse">{{r43.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Je m'assure qu'il n'y a pas le risque incendie : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r44 of response" [value]="r44.idresponse">{{r44.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Je verifie l'absence d'énergie : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r45 of response" [value]="r45.idresponse">{{r45.response}}</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Je ne manipule pas le mobile en conduisant : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r46 of response" [value]="r46.idresponse">{{r46.response}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Je ne conduis pas sous l'emprise:alcool/autre : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r47 of response" [value]="r47.idresponse">{{r47.response}}</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label>J'avertis,je ralentis et je vérifie en conduisant : </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option *ngFor="let r48 of response" [value]="r48.idresponse">{{r48.response}}</option>
+
+            </select>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <!-----------------------------------------------Fin Bloc 6--------------------------------------------------->
+  <!-------------------------------------------- Observation et actions --------------------------------- -->
+
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Observations et actions</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Observations :</label>
+            <textarea class="form-control" rows="3" placeholder="Enter les observations"></textarea>
 
 
             <div class="form-group">
               <label for="type">Type</label>
               <input type="text" class="form-control" id="type" placeholder="Entrer le type ">
             </div>
-            </div>
-
-            <!-- /.form-group -->
-
-
-            <!------------- fin col ------------>
           </div>
+
           <!-- /.form-group -->
 
-          <!-- /.col -->
-          <div class="col-md-6">
 
-            <!-- /.form-group -->
-
-
-            <div class="form-group">
-              <label>Actions actées</label>
-              <textarea class="form-control" rows="3" placeholder="Enter les actions"></textarea>
-            </div>
-
-
-            <div class="form-group">
-              <label>Correction immediate: </label>
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">OUI</option>
-                <option>NON</option>
-
-              </select>
-            </div>
-
-
-            <!-- /.form-group -->
-          </div>
-          <!-- /.col -->
+          <!------------- fin col ------------>
         </div>
-      </div>
-      <!-- /.row -->
-    </div>
+        <!-- /.form-group -->
 
-    <div class="box-body">
-      <div class="row">
-    <div class="col-md-6">
-
-    <button type="button" class="btn btn-block btn-primary btn-lg">Enregistrer</button>
-    </div>
+        <!-- /.col -->
         <div class="col-md-6">
 
-          <button type="button" class="btn btn-block btn-primary btn-lg">Valider</button>
+          <!-- /.form-group -->
+
+
+          <div class="form-group">
+            <label>Actions actées</label>
+            <textarea class="form-control" rows="3" placeholder="Enter les actions"></textarea>
+          </div>
+
+
+          <div class="form-group">
+            <label>Correction immediate: </label>
+            <select class="form-control select2" style="width: 100%;">
+              <option selected="selected">OUI</option>
+              <option>NON</option>
+
+            </select>
+          </div>
+
+
+          <!-- /.form-group -->
         </div>
+        <!-- /.col -->
       </div>
     </div>
+    <!-- /.row -->
+  </div>
 
+  <div class="box-body">
+    <div class="row">
+      <div class="col-md-6">
 
+        <button type="button" class="btn btn-block btn-primary btn-lg">Enregistrer</button>
+      </div>
+      <div class="col-md-6">
+
+        <button type="button" class="btn btn-block btn-primary btn-lg">Valider</button>
+      </div>
     </div>
   </div>
+
+
+
+</div>

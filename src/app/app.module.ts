@@ -14,11 +14,16 @@ import { ListMesComptesRenduComponent } from './list-mes-comptes-rendu/list-mes-
 import { ListComptesRenduComponent } from './list-comptes-rendu/list-comptes-rendu.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { NouveauChantierComponent } from './nouveau-chantier/nouveau-chantier.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ChantierService} from "../services/Chantier.service";
 import {HttpModule} from "@angular/http";
 import { ListChantiersComponent } from './list-chantiers/list-chantiers.component';
 import { EditChantierComponent } from './edit-chantier/edit-chantier.component';
+import {TypeChantiesService} from "../services/TypeChanties.service";
+import {EntrepriseStService} from "../services/EntrepriseSt.service";
+import {ServiceService} from "../services/Service.service";
+import { MailboxComponent } from './mailbox/mailbox.component';
+import {VisiteService} from "../services/VisiteHS.service";
 
 
 const routes:Routes = [
@@ -31,6 +36,7 @@ const routes:Routes = [
   {path:'editChantier/:id',component:EditChantierComponent},
   {path:'documentation',component:DocumentationComponent},
   {path:'nouveauChantier',component:NouveauChantierComponent},
+  {path:'mailbox',component:MailboxComponent},
 
   {path: '',redirectTo:'/home',pathMatch:'full'}
 
@@ -52,12 +58,13 @@ const routes:Routes = [
     DocumentationComponent,
     NouveauChantierComponent,
     ListChantiersComponent,
-    EditChantierComponent
+    EditChantierComponent,
+    MailboxComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule
   ],
-  providers: [ChantierService],
+  providers: [ChantierService,TypeChantiesService,EntrepriseStService,ServiceService,VisiteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

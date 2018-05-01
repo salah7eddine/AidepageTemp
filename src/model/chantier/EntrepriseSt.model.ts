@@ -3,7 +3,7 @@
  */
 
 export class EntrepriseSt{
-  idEntrepSst:number;
+  idEntrepSst:number=null;
   nom:string="";
   tel:number=0;
   email:string="";

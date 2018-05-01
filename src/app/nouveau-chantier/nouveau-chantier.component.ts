@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Chantier} from "../../model/Chantier.model.";
 import {ChantierService} from "../../services/Chantier.service";
-import {EntrepriseSt} from "../../model/EntrepriseSt.model";
-import {Service} from "../../model/Service.model";
-import {TypeChantier} from "../../model/TypeChantier.model";
-import {Entitie} from "../../model/Entitie.model";
 import {EntrepriseStService} from "../../services/EntrepriseSt.service";
 import {ServiceService} from "../../services/Service.service";
+import {TypeChantiesService} from "../../services/TypeChanties.service";
+import {Chantier} from "../../model/chantier/Chantier.model.";
+import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
+import {Service} from "../../model/chantier/Service.model";
+import {Entitie} from "../../model/chantier/Entitie.model";
+import {TypeChantier} from "../../model/chantier/TypeChantier.model";
 
 
 @Component({
@@ -20,70 +21,71 @@ export class NouveauChantierComponent implements OnInit {
   typeChantiers:any=null;
   EntrepriseSt:any=null;
   Services:any=null;
+
   mode:number=1;
-//,public entrepriseStService:EntrepriseStService,public serviceService:ServiceService
-  constructor(public chantierService:ChantierService) { }
+
+  constructor(public chantierService:ChantierService,public typeChantiesService:TypeChantiesService,
+              public entrepriseStService:EntrepriseStService,public serviceService:ServiceService) { }
 
   ngOnInit() {
-    this.chantierService.getTypeChanties().subscribe(data=>{
-      this.typeChantiers=data;
+
+    this.typeChantiesService.getTypeChantiers().subscribe(TypeChantiers=>{
+      this.typeChantiers=TypeChantiers;
     },err=>{
       console.log(err);
     });
 
-    this.chantierService.getEntreprises().subscribe(data=>{
-      this.EntrepriseSt=data;
+    this.entrepriseStService.getEntrepriseSt().subscribe(EntrepriseSt=>{
+      this.EntrepriseSt=EntrepriseSt;
     },err=>{
       console.log(err);
     });
 
-    this.chantierService.getServices().subscribe(data=>{
-      this.Services=data;
+    this.serviceService.getServices().subscribe(Services=>{
+      this.Services=Services;
     },err=>{
       console.log(err);
     })
+
   }
 
   saveChantier(){
-    this.chantierService.saveChantier(this.chantier)
-      .subscribe( data=>{
+
+    this.chantierService.saveChantier(this.chantier).subscribe( data=>{
         console.log(data);
         //this.chantier=data;
         this.mode=2;
 
-
-
-
-
-        /*
-         *
-         this.entrepriseStService.getEntrep(this.chantier.entrepriseSt.idEntrepSst).subscribe(dataEntreprise=>{
-         console.log(dataEntreprise);
-         this.chantier.entrepriseSt=dataEntreprise;
-         },err=>{
-         console.log(err);
-         })
-
-         this.chantierService.getTypeChantier(this.chantier.typeChantier.idTypeChantier).subscribe(dataTypeChantier=>{
-         console.log(dataTypeChantier);
-         this.chantier.typeChantier=dataTypeChantier;
-         },err=>{
-         console.log(err);
-         })
-
-         this.serviceService.getService(this.chantier.service.idService).subscribe(dataService=>{
-         console.log(dataService);
-         this.chantier.service=dataService;
-         },err=>{
-         console.log(err);
-         })
-
-
-         **/
-
       },err=>{
       console.log(err);
     })
+
+
+    /*
+     *
+     this.entrepriseStService.getEntrep(this.chantier.entrepriseSt.idEntrepSst).subscribe(dataEntreprise=>{
+     console.log(dataEntreprise);
+     this.chantier.entrepriseSt=dataEntreprise;
+     },err=>{
+     console.log(err);
+     })
+
+     this.chantierService.getTypeChantier(this.chantier.typeChantier.idTypeChantier).subscribe(dataTypeChantier=>{
+     console.log(dataTypeChantier);
+     this.chantier.typeChantier=dataTypeChantier;
+     },err=>{
+     console.log(err);
+     })
+
+     this.serviceService.getService(this.chantier.service.idService).subscribe(dataService=>{
+     console.log(dataService);
+     this.chantier.service=dataService;
+     },err=>{
+     console.log(err);
+     })
+
+
+     **/
   }
 
 }

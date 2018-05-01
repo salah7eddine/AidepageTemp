@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Chantier} from "../../model/Chantier.model.";
 import {ActivatedRoute, Router} from "@angular/router";
-import {EntrepriseSt} from "../../model/EntrepriseSt.model";
-import {Entitie} from "../../model/Entitie.model";
-import {TypeChantier} from "../../model/TypeChantier.model";
-import {Service} from "../../model/Service.model";
 import {ChantierService} from "../../services/Chantier.service";
+import {ServiceService} from "../../services/Service.service";
+import {EntrepriseStService} from "../../services/EntrepriseSt.service";
+import {TypeChantiesService} from "../../services/TypeChanties.service";
+import {Chantier} from "../../model/chantier/Chantier.model.";
+import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
+import {Service} from "../../model/chantier/Service.model";
+import {Entitie} from "../../model/chantier/Entitie.model";
+import {TypeChantier} from "../../model/chantier/TypeChantier.model";
 
 @Component({
   selector: 'app-edit-chantier',
@@ -21,41 +24,37 @@ export class EditChantierComponent implements OnInit {
   EntrepriseSt:any=null;
   Services:any=null;
 
-  constructor(public activatedRoute:ActivatedRoute,public chantierService:ChantierService,public router:Router) {
+  constructor(public activatedRoute:ActivatedRoute,public chantierService:ChantierService,public router:Router,public typeChantiesService:TypeChantiesService,
+              public entrepriseStService:EntrepriseStService,public serviceService:ServiceService) {
 
     this.id=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
 
-
-    this.chantierService.getChantier(this.id).subscribe(data=>{
-
-      this.chantier=data;
-      console.log(this.chantier);
+    this.chantierService.getChantier(this.id).subscribe(Chantier=>{
+      this.chantier=Chantier;
     },err=>{
       console.log(err);
     });
 
-
-    this.chantierService.getTypeChanties().subscribe(data=>{
-      this.typeChantiers=data;
+    this.typeChantiesService.getTypeChantiers().subscribe(TypeChantiers=>{
+      this.typeChantiers=TypeChantiers;
     },err=>{
       console.log(err);
     });
 
-    this.chantierService.getEntreprises().subscribe(data=>{
-      this.EntrepriseSt=data;
+    this.entrepriseStService.getEntrepriseSt().subscribe(EntrepriseSt=>{
+      this.EntrepriseSt=EntrepriseSt;
     },err=>{
       console.log(err);
     });
 
-    this.chantierService.getServices().subscribe(data=>{
-      this.Services=data;
+    this.serviceService.getServices().subscribe(Services=>{
+      this.Services=Services;
     },err=>{
       console.log(err);
     })
-
 
   }
 

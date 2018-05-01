@@ -1,4 +1,4 @@
-<div class="container">
+<div class="content">
   <section class="content-header">
     <h1>
       Chantier
@@ -10,7 +10,7 @@
     </ol>
   </section>
 
-  <div class="container spacer">
+  <div class="content spacer">
   <div class="box box-default">
     <div class="box-header with-border">
       <h3 class="box-title">Chantier</h3>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="row" >
-      <div class="container spacer">
+      <div class="content spacer">
 
         <div class="panel panel-primary" *ngIf="mode==1">
           <div class="panel-heading"><strong>Nouveau Chantier : </strong></div>
@@ -29,16 +29,18 @@
               <div class="row">
 
                 <div class="col-md-6">
+
                   <div class="form-group">
                     <label for="libelle_Chantier"><strong>Nom du chantier : </strong></label>
                     <input type="text"  class="form-control" [(ngModel)]="chantier.libelle_chantier"  id="libelle_Chantier" placeholder="Entrer le nom du chantier">
                   </div>
+
                   <div class="form-group">
                     <label for="desc_chantier"><strong>Description du chantier : </strong></label>
                     <input type="text"  class="form-control" [(ngModel)]="chantier.desc_chantier" id="desc_chantier" placeholder="Entrer la description du chantier">
                   </div>
 
-                  <div class="form-group">
+                <div class="form-group">
                     <label><strong>Type Chantier : </strong></label>
                     <select class="form-control select2" style="width: 100%;" [(ngModel)]="chantier.typeChantier.id_type">
                       <option *ngFor="let t of typeChantiers"  [value]="t.id_type" >{{t.libelle_type}}</option>
@@ -53,6 +55,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
+
                   <div class="form-group">
                     <label><strong>Date ordre du chantier : </strong> </label>
 

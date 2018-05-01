@@ -1,5 +1,5 @@
 
-<aside class="main-sidebar">
+<aside class=" main-sidebar hold-transition skin-blue sidebar-mini" >
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
 
@@ -26,9 +26,9 @@
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a routerLink="/compteRendu"><i class="fa fa-circle-o"></i> Nouveau Compte Rendu</a></li>
-          <li><a routerLink="/listMesComptesRendu"><i class="fa fa-circle-o"></i> Liste de mes comptes rendu</a></li>
-          <li><a routerLink="/listComptesRendu"><i class="fa fa-circle-o"></i> Liste des comptes rendu</a></li>
+          <li><a routerLink="/compteRendu">Nouveau Compte Rendu</a></li>
+          <li><a routerLink="/listComptesRendu">Liste des comptes rendu</a></li>
+          <li><a routerLink="/listMesComptesRendu">Liste de mes comptes</a></li>
         </ul>
       </li>
 
@@ -50,12 +50,10 @@
 
       <!------------------------------------------- Mail ---------->
       <li>
-        <a href="pages/mailbox/mailbox.html">
+        <a routerLink="/mailbox">
           <i class="fa fa-envelope"></i> <span>Mailbox</span>
           <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
+
             </span>
         </a>
       </li>

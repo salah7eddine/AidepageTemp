@@ -3,12 +3,11 @@ import {Http} from "@angular/http";
 import "rxjs/add/operator/map";
 import {ChantierService} from "../../services/Chantier.service";
 import {Router, ActivatedRoute} from "@angular/router";
-import {Chantier} from "../../model/Chantier.model.";
-import {isNumber} from "util";
-import {EntrepriseSt} from "../../model/EntrepriseSt.model";
-import {Entitie} from "../../model/Entitie.model";
-import {TypeChantier} from "../../model/TypeChantier.model";
-import {Service} from "../../model/Service.model";
+import {Chantier} from "../../model/chantier/Chantier.model.";
+import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
+import {Service} from "../../model/chantier/Service.model";
+import {Entitie} from "../../model/chantier/Entitie.model";
+import {TypeChantier} from "../../model/chantier/TypeChantier.model";
 
 @Component({
   selector: 'app-list-chantiers',
@@ -16,21 +15,25 @@ import {Service} from "../../model/Service.model";
   styleUrls: ['./list-chantiers.component.css']
 })
 export class ListChantiersComponent implements OnInit {
-
-  chantier:Chantier=new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier() );
+  //$:any;
+  chantier:Chantier=new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier());
   id:number;
   pageChantiers:any;
   motCle:string="";
   currentPage:number=0;
-  size:number=5;
+  size:number=10;
   pages:Array<number>;
+  chantiers:any=null;
 
 
   constructor(public http:Http,public chantierservice:ChantierService,public router:Router,public activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
-
-
+    this.chantierservice.getChantierss().subscribe(data=>{
+      this.chantiers=data;
+    },err=>{
+      console.log(err);
+    })
 
   }
 
@@ -42,6 +45,7 @@ export class ListChantiersComponent implements OnInit {
       console.log(err);
     })
   }
+
   chercher(){
     this.doSearch();
   }

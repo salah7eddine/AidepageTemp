@@ -3,7 +3,7 @@
  */
 
 export class Entitie{
-  idEntite:any=null;
+  idEntite:number=null;
   libelle:string="";
 
   constructor(){
