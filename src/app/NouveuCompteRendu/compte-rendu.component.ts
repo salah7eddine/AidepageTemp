@@ -21,6 +21,11 @@ import {CompteRendu} from "../../model/doc/CompteRendu.model";
 import {Fonction} from "../../model/user/Fonction.model";
 import {User} from "../../model/user/User.model";
 import {VisiteHs} from "../../model/chantier/VisiteHs.model";
+import {Observation} from "../../model/chantier/Observation.model";
+import {TypeObservation} from "../../model/chantier/TypeObservation.model";
+import {Action} from "../../model/chantier/Action.model";
+import {UserService} from "../../services/user.service";
+import {ChantierService} from "../../services/Chantier.service";
 
 @Component({
   selector: 'app-compte-rendu',
@@ -29,24 +34,41 @@ import {VisiteHs} from "../../model/chantier/VisiteHs.model";
 })
 export class CompteRenduComponent implements OnInit {
 
-  reponse:any=null;
+
+  user:User=new User(new Fonction());
+  compteRendu:CompteRendu=new CompteRendu(new EtatCompteRendu());
   chantier:Chantier=new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier());
-
-  documentChantier:DocumentChantier=new DocumentChantier();
   balisageSignalisation:BalisageSignalisation=new BalisageSignalisation();
+  attitudeUrgence:AttitudeUrgence=new AttitudeUrgence();
+  documentChantier:DocumentChantier=new DocumentChantier();
+  rqs:Rqs=new Rqs();
+  epcEpi:EpcEpi=new EpcEpi();
   amenagementChantier:AmenagementChantier=new AmenagementChantier();
+  hygieneProprete:HygieneProprete=new HygieneProprete();
 
-  visiteHS:VisiteHs=new VisiteHs(new User(new Fonction()),new CompteRendu(new EtatCompteRendu()),
-    new Chantier(new EntrepriseSt(),new Service(new Entitie()),new TypeChantier())
-    ,new BalisageSignalisation(),new AttitudeUrgence(),new DocumentChantier(),new Rqs(),new EpcEpi(),new AmenagementChantier(),new HygieneProprete());
+  visiteHS:VisiteHs=new VisiteHs(this.user,this.compteRendu,
+    this.chantier,this.balisageSignalisation,this.attitudeUrgence,this.documentChantier,this.rqs,this.epcEpi,
+    this.amenagementChantier,this.hygieneProprete);
 
+  observation:Observation=new Observation(this.visiteHS,new TypeObservation());
+
+
+  /* -----Action-------- */
+  action:Action=new Action(this.chantier);
+
+
+
+
+  reponse:any=null;
+  chantiers:any=null;
   typeChantiers:any=null;
   EntrepriseSt:any=null;
   Services:any=null;
+  fonction:any=null;
 
 
   constructor(public visiteService:VisiteService,public typeChantiesService:TypeChantiesService, public entrepriseStService:EntrepriseStService,
-              public serviceService:ServiceService) { }
+              public serviceService:ServiceService,public userservice:UserService,public chantierService:ChantierService) { }
 
   ngOnInit() {
 
@@ -54,6 +76,12 @@ export class CompteRenduComponent implements OnInit {
         this.reponse=data;
       },err=>{console.log(err)
       });
+
+    this.chantierService.getChantierss().subscribe(data=>{
+      this.chantiers=data;
+    },err=>{
+      console.log(err);
+    })
 
     this.typeChantiesService.getTypeChantiers().subscribe(TypeChantiers=>{
       this.typeChantiers=TypeChantiers;
@@ -73,7 +101,31 @@ export class CompteRenduComponent implements OnInit {
       console.log(err);
     })
 
+    this.userservice.getFonctions().subscribe(Fonctions=>{
+      this.fonction=Fonctions;
+    },err=>{
+      console.log(err);
+    })
+
   }
 
+  saveCpteRendu(){
 
+
+    console.log("--------visiteHS----------");
+    console.log(this.visiteHS);
+    console.log("---------chantier---------");
+    console.log(this.chantier);
+    console.log("--------compteRendu----------");
+    console.log(this.compteRendu);
+    console.log("------------------");
+    console.log(this.amenagementChantier);
+    console.log("------------------");
+    console.log(this.hygieneProprete);
+    console.log("------------------");
+    console.log(this.rqs);
+
+
+
+  }
 }

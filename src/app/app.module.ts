@@ -24,6 +24,7 @@ import {EntrepriseStService} from "../services/EntrepriseSt.service";
 import {ServiceService} from "../services/Service.service";
 import { MailboxComponent } from './mailbox/mailbox.component';
 import {VisiteService} from "../services/VisiteHS.service";
+import {UserService} from "../services/user.service";
 
 
 const routes:Routes = [
@@ -64,7 +65,7 @@ const routes:Routes = [
   imports: [
     BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule
   ],
-  providers: [ChantierService,TypeChantiesService,EntrepriseStService,ServiceService,VisiteService],
+  providers: [ChantierService,TypeChantiesService,EntrepriseStService,ServiceService,VisiteService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

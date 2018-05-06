@@ -26,29 +26,27 @@
     <div class="box-body">
       <div class="row">
         <div class="col-md-6">
+
+          <!--
           <div class="form-group">
-            <label for="adresseChantier">Adresse Chantier</label>
-            <input type="text" class="form-control" id="adresseChantier"  placeholder="Entrer l'adresse chantier">
+            <label><strong>Fonctions : </strong></label>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="user.fonction">
+              <option *ngFor="let f of fonction" [value]="f.id"  >{{f.fontion}}</option>
+            </select>
           </div>
+          -->
+          <div class="form-group">
+          <label><strong>Chantiers : </strong></label>
+          <select class="form-control select2" style="width: 100%;" [(ngModel)]="visiteHS.chantier">
+            <option *ngFor="let c of chantiers" [value]="c.id_chantier"  >{{c.libelle_chantier}}</option>
+          </select>
+        </div>
+
           <div class="form-group">
             <label for="natureTr">Nature des travaux</label>
-            <input type="text" class="form-control" id="natureTr" placeholder="Entrer le type du chantier">
+            <input type="text" class="form-control" id="natureTr" placeholder="Entrer le type du chantier" >
           </div>
 
-
-          <div class="form-group">
-            <label><strong>Type Chantier : </strong></label>
-            <select class="form-control select2" style="width: 100%;" [(ngModel)]="visiteHS.chantier.typeChantier.id_type">
-              <option *ngFor="let t of typeChantiers"  [value]="t.id_type" >{{t.libelle_type}}</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label><strong>Entreprise Sous traitante : </strong></label>
-            <select class="form-control select2" style="width: 100%;" [(ngModel)]="visiteHS.chantier.entrepriseSt.id_entrep">
-              <option *ngFor="let c of EntrepriseSt" [value]="c.id_entrep" >{{c.nom}}</option>
-            </select>
-          </div>
 
 
 
@@ -65,32 +63,29 @@
           <!-- /.form-group -->
           <div class="form-group">
             <label>Date de la Visite:</label>
-
             <div class="input-group date">
-              <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </div>
+              <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
               <input type="date" class="form-control pull-right" id="datepicker">
             </div>
-            <!-- /.input group -->
           </div>
 
           <div class="form-group">
             <label for="visiteurs">Visiteurs</label>
-            <input type="text" class="form-control" id="visiteurs" placeholder="Entrer les visiteurs">
+            <input type="text" class="form-control" id="visiteurs" placeholder="Entrer les visiteurs" [(ngModel)]="visiteHS.visiteurs">
           </div>
 
           <div class="form-group">
             <label for="agentVisite">Agents Visités</label>
-            <input type="text" class="form-control" id="agentvisite" placeholder="Entrer les agents visités">
+            <input type="text" class="form-control" id="agentvisite" placeholder="Entrer les agents visités" [(ngModel)]="visiteHS.Agents_Visites" >
           </div>
+
 
           <div class="form-group">
-            <label for="fonction">Fonctions</label>
-            <input type="text" class="form-control" id="fonction" placeholder="Entrer les fonctions">
+            <label><strong>Fonctions : </strong></label>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="user.fonction">
+              <option *ngFor="let f of fonction" [value]="f.id"  >{{f.fontion}}</option>
+            </select>
           </div>
-
-
 
           <!-- /.form-group -->
         </div>
@@ -118,47 +113,39 @@
           <!-- Document d'accés ou de chantier -->
 
           <div class="form-group">
-            <label>Ordre de travail ou de service : </label>
-            <select class="form-control select2"  style="width: 100%;"  ><!-- [(ngModule)]="documentChantier.ordreTravail" -->
-              <option *ngFor="let r of reponse" [value]="r.response">{{r.response}}</option>
-            </select>
-          </div>
-
-
-          <div class="form-group">
-            <label>Permis de travail : </label>
-            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.documentChantier.permisTravail"-->
-              <option *ngFor="let r1 of response" [value]="r1.response">{{r1.response}}</option>
+            <label><strong>Ordre de travail ou de service : </strong></label>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="documentChantier.ordreTravail">
+              <option *ngFor="let r of reponse" [value]="r.lib"  >{{r.lib}}</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label>Attestation de consignation : </label>
-            <select class="form-control select2"style="width: 100%;"><!--  [(ngModule)]="visiteHS.documentChantier.attestationConsignation" -->
-              <option *ngFor="let r2 of response" [value]="r2.response">{{r2.response}}</option>
+            <label><strong>Attestation de consignation : </strong></label>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="documentChantier.attestationConsignation"><!--   -->
+              <option *ngFor="let r2 of reponse" [value]="r2.lib">{{r2.lib}}</option>
             </select>
           </div>
 
 
           <div class="form-group">
             <label>Titre d'habilitation : </label>
-            <select class="form-control select2" style="width: 100%;"><!--  [(ngModule)]="visiteHS.documentChantier.titreHabilitation"-->
-              <option *ngFor="let r3 of response" [value]="r3.idresponse">{{r3.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="documentChantier.titreHabilitation"><!--  -->
+              <option *ngFor="let r3 of reponse" [value]="r3.lib">{{r3.lib}}</option>
             </select>
           </div>
 
 
           <div class="form-group">
             <label>DICT : </label>
-            <select class="form-control select2" style="width: 100%;"><!--   [(ngModule)]="visiteHS.documentChantier.dict" -->
-              <option *ngFor="let r4 of response" [value]="r4.response">{{r4.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="documentChantier.dict"><!--    -->
+              <option *ngFor="let r4 of reponse" [value]="r4.lib">{{r4.lib}}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Plan de prévention général : </label>
-            <select class="form-control select2" style="width: 100%;"><!-- [(ngModule)]="visiteHS.documentChantier.planPrevention" -->
-              <option *ngFor="let r5 of response" [value]="r5.idresponse">{{r5.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="documentChantier.planPrevention" ><!-- -->
+              <option *ngFor="let r5 of reponse" [value]="r5.lib">{{r5.lib}}</option>
             </select>
           </div>
 
@@ -174,44 +161,44 @@
           <!-- /.form-group -->
           <div class="form-group">
             <label>Installation du chantier : </label>
-            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.installationChantier"-->
-              <option *ngFor="let r6 of response" [value]="r6.idresponse">{{r6.response}}</option>
+            <select class="form-control select2"  style="width: 100%;"  [(ngModel)]="amenagementChantier.installationChantier"><!--  -->
+              <option *ngFor="let r6 of reponse" [value]="r6.lib">{{r6.lib}}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Base de vie : </label>
-            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.baseVie"-->
-              <option *ngFor="let r7 of response" [value]="r7.idresponse">{{r7.response}}</option>
+            <select class="form-control select2"  style="width: 100%;" [(ngModel)]="amenagementChantier.baseVie"><!-- -->
+              <option *ngFor="let r7 of reponse" [value]="r7.lib">{{r7.lib}}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Aire de stockage : </label>
-            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.aireStockage"-->
-              <option *ngFor="let r8 of response" [value]="r8.idresponse">{{r8.response}}</option>
+            <select class="form-control select2"  style="width: 100%;"  [(ngModel)]="amenagementChantier.aireStockage"><!-- -->
+              <option *ngFor="let r8 of reponse" [value]="r8.lib">{{r8.lib}}</option>
             </select>
           </div>
 
 
           <div class="form-group">
             <label>Plan de circulation : </label>
-            <select class="form-control select2"  style="width: 100%;"><!--[(ngModule)]="visiteHS.amenagementChantier.planCirculation" -->
-              <option *ngFor="let r9 of response" [value]="r9.idresponse">{{r9.response}}</option>
+            <select class="form-control select2"  style="width: 100%;"  [(ngModel)]="amenagementChantier.planCirculation"><!--  -->
+              <option *ngFor="let r9 of reponse" [value]="r9.lib">{{r9.lib}}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Distance de sécurité : </label>
-            <select class="form-control select2" style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.distanceSecurite" -->
-              <option *ngFor="let r10 of response" [value]="r10.idresponse">{{r10.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="amenagementChantier.distanceSecurite" ><!--   -->
+              <option *ngFor="let r10 of reponse" [value]="r10.lib">{{r10.lib}}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Bassin de rétention : </label>
-            <select class="form-control select2"  style="width: 100%;"><!-- [(ngModule)]="visiteHS.amenagementChantier.bassinRetention"-->
-              <option *ngFor="let r11 of response" [value]="r11.idresponse">{{r11.response}}</option>
+            <select class="form-control select2"  style="width: 100%;"  [(ngModel)]="amenagementChantier.bassinRetention"><!-- -->
+              <option *ngFor="let r11 of reponse" [value]="r11.lib">{{r11.lib}}</option>
 
             </select>
           </div>
@@ -244,8 +231,8 @@
 
           <div class="form-group">
             <label>Signalisation de jour : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r12 of response" [value]="r12.idresponse">{{r12.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="balisageSignalisation.bassinRetention">
+              <option *ngFor="let r12 of reponse" [value]="r12.lib">{{r12.lib}}</option>
 
             </select>
           </div>
@@ -254,8 +241,8 @@
           <div class="form-group">
             <label>Signalisation de nuit : </label>
 
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r13 of response" [value]="r13.idresponse">{{r13.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="balisageSignalisation.signalisationNuit">
+              <option *ngFor="let r13 of reponse" [value]="r13.lib">{{r13.lib}}</option>
 
             </select>
 
@@ -263,8 +250,8 @@
 
           <div class="form-group">
             <label>Etat des panneaux : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r14 of response" [value]="r14.idresponse">{{r14.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="balisageSignalisation.etatPanneaux">
+              <option *ngFor="let r14 of reponse" [value]="r14.lib">{{r14.lib}}</option>
 
             </select>
 
@@ -273,8 +260,8 @@
 
           <div class="form-group">
             <label>Ordre des panneaux : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r15 of response" [value]="r15.idresponse">{{r15.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="balisageSignalisation.ordrePanneaux">
+              <option *ngFor="let r15 of reponse" [value]="r15.lib">{{r15.lib}}</option>
 
             </select>
           </div>
@@ -284,16 +271,16 @@
 
           <div class="form-group">
             <label>Chantier clôturé : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r16 of response" [value]="r16.idresponse">{{r16.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="balisageSignalisation.chantierCloture">
+              <option *ngFor="let r16 of reponse" [value]="r16.lib">{{r16.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Chantier balisé en dur : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r17 of response" [value]="r17.idresponse">{{r17.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="balisageSignalisation.chantierBaliseEnDur">
+              <option *ngFor="let r17 of reponse" [value]="r17.lib">{{r17.lib}}</option>
 
             </select>
           </div>
@@ -310,24 +297,24 @@
           <!-- /.form-group -->
           <div class="form-group">
             <label>Moyens de propreté(savon,eau,...) : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r18 of response" [value]="r18.idresponse">{{r18.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="hygieneProprete.moyensProprete">
+              <option *ngFor="let r18 of reponse" [value]="r18.lib">{{r18.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Nuisances (bruuit,poussière...) : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r19 of response" [value]="r19.idresponse">{{r19.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="hygieneProprete.nuisances">
+              <option *ngFor="let r19 of reponse" [value]="r19.lib">{{r19.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Evacuation des déblais : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r20 of response" [value]="r20.idresponse">{{r20.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="hygieneProprete.evacuationDeblais">
+              <option *ngFor="let r20 of reponse" [value]="r20.lib">{{r20.lib}}</option>
 
             </select>
           </div>
@@ -335,16 +322,16 @@
 
           <div class="form-group">
             <label>Propreté de véhicule : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r21 of response" [value]="r21.idresponse">{{r21.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="hygieneProprete.propreteVehicule">
+              <option *ngFor="let r21 of reponse" [value]="r21.lib">{{r21.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Registre d'incident : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r22 of response" [value]="r22.idresponse">{{r22.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="hygieneProprete.registreIncident">
+              <option *ngFor="let r22 of reponse" [value]="r22.lib">{{r22.lib}}</option>
 
             </select>
           </div>
@@ -377,8 +364,8 @@
 
           <div class="form-group">
             <label>Numéros utiles : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r23 of response" [value]="r23.idresponse">{{r23.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="attitudeUrgence.numeroUtile">
+              <option *ngFor="let r23 of reponse" [value]="r23.lib" >{{r23.lib}}</option>
 
             </select>
           </div>
@@ -386,18 +373,16 @@
 
           <div class="form-group">
             <label>Consignes d'évacuation : </label>
-
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r24 of response" [value]="r24.idresponse">{{r24.response}}</option>
-
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="attitudeUrgence.consigneEvacuation">
+              <option *ngFor="let r24 of reponse" [value]="r24.lib">{{r24.lib}}</option>
             </select>
 
           </div>
 
           <div class="form-group">
             <label>Liste des sauveteurs et secouristes au travail : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r25 of response" [value]="r25.idresponse">{{r25.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="attitudeUrgence.listSauvSec">
+              <option *ngFor="let r25 of reponse" [value]="r25.lib">{{r25.lib}}</option>
 
             </select>
 
@@ -413,24 +398,24 @@
           <!-- /.form-group -->
           <div class="form-group">
             <label>Connaissance de l'attitude en cas d'urgence : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r26 of response" [value]="r26.idresponse">{{r26.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="attitudeUrgence.connaissanceAttUrg">
+              <option *ngFor="let r26 of reponse" [value]="r26.lib">{{r26.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Boite à pharmacie : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r27 of response" [value]="r27.idresponse">{{r27.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="attitudeUrgence.boitePharmacie">
+              <option *ngFor="let r27 of reponse" [value]="r27.lib">{{r27.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Moyens d'extinction du feu : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r28 of response" [value]="r28.idresponse">{{r28.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="attitudeUrgence.moyenExtinctionFeu">
+              <option *ngFor="let r28 of reponse" [value]="r28.lib">{{r28.lib}}</option>
 
             </select>
           </div>
@@ -463,8 +448,8 @@
 
           <div class="form-group">
             <label>Utilisation des EPC : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r29 of response" [value]="r29.idresponse">{{r29.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="epcEpi.utilisationEpc">
+              <option *ngFor="let r29 of reponse" [value]="r29.lib">{{r29.lib}}</option>
 
             </select>
           </div>
@@ -473,8 +458,8 @@
           <div class="form-group">
             <label>Port des EPI : </label>
 
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r30 of response" [value]="r30.idresponse">{{r30.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="epcEpi.portEpi">
+              <option *ngFor="let r30 of reponse" [value]="r30.lib">{{r30.lib}}</option>
 
             </select>
 
@@ -482,8 +467,8 @@
 
           <div class="form-group">
             <label>Contrôle réglementaire(extincteur,engin...) : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r31 of response" [value]="r31.idresponse">{{r31.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="epcEpi.ctrlReg">
+              <option *ngFor="let r31 of reponse" [value]="r31.lib">{{r31.lib}}</option>
 
             </select>
 
@@ -499,24 +484,24 @@
           <!-- /.form-group -->
           <div class="form-group">
             <label>Outillage conforme : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r32 of response" [value]="r32.idresponse">{{r32.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="epcEpi.outillageCfrm">
+              <option *ngFor="let r32 of reponse" [value]="r32.lib">{{r32.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Gilet et tenue haute visibilité : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r33 of response" [value]="r33.idresponse">{{r33.response}}</option>
+            <select class="form-control select2" style="width: 100%;"[(ngModel)]="epcEpi.giletTenueHv">
+              <option *ngFor="let r33 of reponse" [value]="r33.lib">{{r33.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Outillage rangé : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r34 of response" [value]="r34.idresponse">{{r34.response}}</option>
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="epcEpi.outillageRange">
+              <option *ngFor="let r34 of reponse" [value]="r34.lib">{{r34.lib}}</option>
 
             </select>
           </div>
@@ -550,8 +535,8 @@
 
           <div class="form-group">
             <label>Affichage des RQS : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r35 of response" [value]="r35.idresponse">{{r35.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.affRqs">
+              <option *ngFor="let r35 of reponse" [value]="r35.lib">{{r35.lib}}</option>
 
             </select>
           </div>
@@ -560,8 +545,8 @@
           <div class="form-group">
             <label>Sensiblisation aux RQS : </label>
 
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r36 of response" [value]="r36.idresponse">{{r36.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.sensibilisationRqs">
+              <option *ngFor="let r36 of reponse" [value]="r36.lib">{{r36.lib}}</option>
 
             </select>
 
@@ -570,8 +555,8 @@
           <div class="form-group">
             <label>connaissance des RQS : </label>
 
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r37 of response" [value]="r37.idresponse">{{r37.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.connRqs">
+              <option *ngFor="let r37 of reponse" [value]="r37.lib">{{r37.lib}}</option>
 
             </select>
 
@@ -580,8 +565,8 @@
           <div class="form-group">
             <label>Convaincus par le rôle des RQS : </label>
 
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r38 of response" [value]="r38.idresponse">{{r38.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.convRoleRqs">
+              <option *ngFor="let r38 of reponse" [value]="r38.lib">{{r38.lib}}</option>
 
             </select>
 
@@ -589,8 +574,8 @@
 
           <div class="form-group">
             <label>Je ne passe pas sous une charge : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r39 of response" [value]="r39.idresponse">{{r39.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.passerSsCharge">
+              <option *ngFor="let r39 of reponse" [value]="r39.lib">{{r39.lib}}</option>
 
             </select>
 
@@ -598,8 +583,8 @@
 
           <div class="form-group">
             <label>Je me positionne en dehors de la trajectoire des véhicules : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r40 of response" [value]="r40.idresponse">{{r40.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.posDehorsTrajecVeh">
+              <option *ngFor="let r40 of reponse" [value]="r40.lib">{{r40.lib}}</option>
 
             </select>
 
@@ -607,8 +592,8 @@
 
           <div class="form-group">
             <label>J'accroche mon harnais quand je travaille en hauteur : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r41 of response" [value]="r41.idresponse">{{r41.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.accrocherHarnais">
+              <option *ngFor="let r41 of reponse" [value]="r41.lib">{{r41.lib}}</option>
 
             </select>
           </div>
@@ -625,8 +610,8 @@
           <!-- /.form-group -->
           <div class="form-group">
             <label>Je descends dans la tranchée la protection est mise en place : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r42 of response" [value]="r42.idresponse">{{r42.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.desTranche">
+              <option *ngFor="let r42 of reponse" [value]="r42.lib">{{r42.lib}}</option>
 
             </select>
           </div>
@@ -634,46 +619,46 @@
 
           <div class="form-group">
             <label>Je m'assure que l'atmosphère est controlée avant d'entrer : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r43 of response" [value]="r43.idresponse">{{r43.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.assurerAtm">
+              <option *ngFor="let r43 of reponse" [value]="r43.lib">{{r43.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Je m'assure qu'il n'y a pas le risque incendie : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r44 of response" [value]="r44.idresponse">{{r44.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.assurerRisqueIncendie">
+              <option *ngFor="let r44 of reponse" [value]="r44.lib">{{r44.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Je verifie l'absence d'énergie : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r45 of response" [value]="r45.idresponse">{{r45.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.verifAbsEnergie">
+              <option *ngFor="let r45 of reponse" [value]="r45.lib">{{r45.lib}}</option>
 
             </select>
           </div>
           <div class="form-group">
             <label>Je ne manipule pas le mobile en conduisant : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r46 of response" [value]="r46.idresponse">{{r46.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.manipMobile">
+              <option *ngFor="let r46 of reponse" [value]="r46.lib">{{r46.lib}}</option>
 
             </select>
           </div>
 
           <div class="form-group">
             <label>Je ne conduis pas sous l'emprise:alcool/autre : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r47 of response" [value]="r47.idresponse">{{r47.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.conduireSsEmprise">
+              <option *ngFor="let r47 of reponse" [value]="r47.lib">{{r47.lib}}</option>
 
             </select>
           </div>
           <div class="form-group">
             <label>J'avertis,je ralentis et je vérifie en conduisant : </label>
-            <select class="form-control select2" style="width: 100%;">
-              <option *ngFor="let r48 of response" [value]="r48.idresponse">{{r48.response}}</option>
+            <select class="form-control select2" style="width: 100%;"  [(ngModel)]="rqs.ralEnConduisant">
+              <option *ngFor="let r48 of reponse" [value]="r48.lib">{{r48.lib}}</option>
 
             </select>
           </div>
@@ -702,12 +687,12 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Observations :</label>
-            <textarea class="form-control" rows="3" placeholder="Enter les observations"></textarea>
+            <textarea class="form-control" rows="3" placeholder="Enter les observations" [(ngModel)]="observation.descObservation"></textarea>
 
 
             <div class="form-group">
               <label for="type">Type</label>
-              <input type="text" class="form-control" id="type" placeholder="Entrer le type ">
+              <input type="text" class="form-control" id="type" placeholder="Entrer le type" [(ngModel)]="observation.typeObservation.type" >
             </div>
           </div>
 
@@ -726,13 +711,13 @@
 
           <div class="form-group">
             <label>Actions actées</label>
-            <textarea class="form-control" rows="3" placeholder="Enter les actions"></textarea>
+            <textarea class="form-control" rows="3" placeholder="Enter les actions" [(ngModel)]="action.object"   ></textarea>
           </div>
 
 
           <div class="form-group">
             <label>Correction immediate: </label>
-            <select class="form-control select2" style="width: 100%;">
+            <select class="form-control select2" style="width: 100%;" [(ngModel)]="action.statut"  >
               <option selected="selected">OUI</option>
               <option>NON</option>
 
@@ -752,7 +737,7 @@
     <div class="row">
       <div class="col-md-6">
 
-        <button type="button" class="btn btn-block btn-primary btn-lg">Enregistrer</button>
+        <button type="button" class="btn btn-block btn-primary btn-lg" (click)="saveCpteRendu()">Enregistrer</button>
       </div>
       <div class="col-md-6">
 

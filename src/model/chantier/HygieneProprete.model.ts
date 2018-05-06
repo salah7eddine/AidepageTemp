@@ -2,7 +2,7 @@
  * Created by Admin on 30/04/2018.
  */
 export class HygieneProprete{
-  id_hyg_prp:number=0;
+  id_hyg_prp:number=null;
   moyensProprete:string="";
   nuisances:string="";
   evacuationDeblais:string="";

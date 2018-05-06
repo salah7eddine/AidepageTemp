@@ -20,7 +20,7 @@
 
     <table class=" content table table-striped">
       <tr>
-        <th>ID</th><th>Date fin </th><th>Date ordre</th><th>Desc chantier</th><th>libelle chantier</th><th>Service</th><th>Entreprise St</th><th>Type Chantier</th>
+        <th>ID</th><th>Date fin </th><th>Date ordre</th><th>Desc chantier</th><th>libelle chantier</th><th>Service</th><th>Entreprise St</th><th>Type Chantier</th><th> </th><th> </th>
       </tr>
       <tr *ngFor="let c of pageChantiers?.content">
         <td>{{c.id_chantier}}</td>
@@ -31,6 +31,7 @@
         <td>{{c.service.libelle}}</td>
         <td>{{c.entrepriseSt.nom}}</td>
         <td>{{c.typeChantier.libelle_type}}</td>
+
         <td>
           <a (click)="onEditChantier(c.id_chantier)" class="clickable">Edit</a>
         </td>
@@ -39,7 +40,7 @@
         </td>
       </tr>
     </table>
-    <div class="container">
+    <div class="content">
       <ul class="nav nav-pills">
         <li [ngClass]="{active:i==currentPage}" *ngFor="let p of pages; let i=index">
           <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
@@ -47,9 +48,5 @@
       </ul>
     </div>
   </div>
-
-
-
-
 </div>
 

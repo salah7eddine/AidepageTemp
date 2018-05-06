@@ -4,6 +4,6 @@
 
 export class Fonction{
   id:number=null;
-  fontion:String;
+  fonction:String;
 
 }

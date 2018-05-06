@@ -8,6 +8,7 @@ import {EpcEpi} from "./EpcEpi.model";
 import {AmenagementChantier} from "./AmenagementChantier.model";
 import {CompteRendu} from "../doc/CompteRendu.model";
 import {HygieneProprete} from "./HygieneProprete.model";
+import {Observation} from "./Observation.model";
 /**
  * Created by Admin on 30/04/2018.
  */
@@ -20,6 +21,8 @@ export class VisiteHs{
   dateVisite:Date=null;
   ordreViste:String="";
   natureTravaux:string="";
+  visiteurs:Array<String>=null;
+  Agents_Visites:Array<String>=null;
 
   user:User=null;
   compteRendu:CompteRendu=null;
@@ -33,7 +36,8 @@ export class VisiteHs{
   hygieneProprete:HygieneProprete=null;
 
   constructor(user:User, compteRendu:CompteRendu, chantier:Chantier, balisageSignalisation:BalisageSignalisation,attitudeUrgence:AttitudeUrgence,
-              documentChantier:DocumentChantier, rqs:Rqs,epcEpi:EpcEpi,amenagenmentChantier:AmenagementChantier,hygieneProprete:HygieneProprete)
+              documentChantier:DocumentChantier, rqs:Rqs,epcEpi:EpcEpi,amenagenmentChantier:AmenagementChantier,
+              hygieneProprete:HygieneProprete)
   {
     this.user=user;
     this.compteRendu=compteRendu;

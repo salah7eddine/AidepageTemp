@@ -5,10 +5,12 @@ import {Injectable} from "@angular/core";
  */
 @Injectable()
 export class TypeChantiesService{
+  private host: string = 'http://localhost:8080/';
+
   constructor(private http:Http){}
 
-  getTypeChantiers(){return this.http.get("http://localhost:8080/typeChantier").map(resp=>resp.json());}
+  getTypeChantiers(){return this.http.get(this.host+'typeChantier').map(resp=>resp.json());}
 
-  getTypeChantier(id:number){return this.http.get("http://localhost:8080/typeChantier/"+id).map(resp=>resp.json());}
+  getTypeChantier(id:number){return this.http.get(this.host+'typeChantier/'+id).map(resp=>resp.json());}
 
 }
