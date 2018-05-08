@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
+import {VisiteHs} from "../../model/chantier/VisiteHs.model";
 /**
  * Created by Admin on 30/04/2018.
  */
@@ -22,6 +23,10 @@ export class VisiteService{
 
 
   getVisite(id:number){return this.http.get(this.host + 'VisiteHs/' +id).map(resp=>resp.json());}
+
+  saveVisite(visite:VisiteHs){
+    return this.http.post(this.host+'visiteHs',visite).map(resp=>resp.json());
+  }
 
 
 }

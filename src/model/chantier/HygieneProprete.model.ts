@@ -3,12 +3,12 @@
  */
 export class HygieneProprete{
   id_hyg_prp:number=null;
-  moyensProprete:string="";
+  moyens_proprete:string="";
   nuisances:string="";
-  evacuationDeblais:string="";
-  propreteVehicule:string="";
-  registreIncident:string="";
-  respectEnvironnement:string="";
+  evacuation_deblais:string="";
+  proprete_vehicule:string="";
+  registre_incident:string="";
+  respect_environnement:string="";
 
   constructor(){
 

@@ -5,12 +5,12 @@
 export class BalisageSignalisation{
 
   id_bal_sign:number=null;
-  signalisationJour:string="";
-  signalisationNuit:string="";
-  etatPanneaux:string="";
-  ordrePanneaux:string="";
-  chantierCloture:string="";
-  chantierBaliseEnDur:string;
+  signalisation_jour:string="";
+  signalisation_nuit:string="";
+  etat_panneaux:string="";
+  ordre_panneaux:string="";
+  chantier_cloture:string="";
+  chantier_balise_en_dur:string;
 
   constructor(){
 

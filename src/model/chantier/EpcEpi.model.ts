@@ -4,15 +4,13 @@
 
 export class EpcEpi{
   id_epc_epi:number=null;
-  utilisationEpc:string="";
-  portEpi:string="";
-  ctrlReg:string="";
-  outillageCfrm:string="";
-  giletTenueHv:string="";
-  outillageRange:string="";
+  utilisation_epc:string="";
+  port_epi:string="";
+  ctrl_reg:string="";
+  outillage_cfrm:string="";
+  gilet_tenue_hv:string="";
+  outillage_range:string="";
 
-  constructor(){
-
-  }
+  constructor(){}
 
 }

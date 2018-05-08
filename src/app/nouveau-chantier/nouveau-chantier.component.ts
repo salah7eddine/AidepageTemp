@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ChantierService} from "../../services/Chantier.service";
-import {EntrepriseStService} from "../../services/EntrepriseSt.service";
-import {ServiceService} from "../../services/Service.service";
-import {TypeChantiesService} from "../../services/TypeChanties.service";
+import {ChantierService} from "../../services/chantier/Chantier.service";
+import {EntrepriseStService} from "../../services/chantier/EntrepriseSt.service";
+import {ServiceService} from "../../services/chantier/Service.service";
+import {TypeChantiesService} from "../../services/chantier/TypeChanties.service";
 import {Chantier} from "../../model/chantier/Chantier.model.";
 import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
 import {Service} from "../../model/chantier/Service.model";

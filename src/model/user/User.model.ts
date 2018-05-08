@@ -1,5 +1,4 @@
 import {Fonction} from "./Fonction.model";
-import {VisiteHs} from "../chantier/VisiteHs.model";
 /**
  * Created by Admin on 30/04/2018.
  */
@@ -10,10 +9,12 @@ export class User{
   pseudoName:string;
   email:string;
   num:number;
-
-  fct:Fonction;
+  password:string;
+  dateCreation:Date=null;
+  photo:File=null;
+  fonction:Fonction;
 
   constructor(fonction:Fonction){
-
+    this.id_user=1; //TODO delete
   }
 }

@@ -1,6 +1,6 @@
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
-import {Service} from "../model/chantier/Service.model";
+import {Service} from "../../model/chantier/Service.model";
 
 @Injectable()
 export class ServiceService{

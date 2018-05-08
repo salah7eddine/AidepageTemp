@@ -3,7 +3,7 @@ import {Http, Response} from "@angular/http";
 import  "rxjs/add/operator/map";
 import  "rxjs/add/operator/catch"
 import {map} from "rxjs/operators";
-import {Chantier} from "../model/chantier/Chantier.model.";
+import {Chantier} from "../../model/chantier/Chantier.model.";
 
 @Injectable()
 export class ChantierService {
@@ -13,7 +13,7 @@ export class ChantierService {
   constructor(private http:Http){}
 
 
-  getChantiers(motCle:String,page:number,size:number){return this.http.get(this.host+'chercherChantier?mc="+motCle+"&page="+page+"&size='+size)
+  getChantiers(motCle:String,page:number,size:number){return this.http.get(this.host+'chercherChantier?mc='+motCle+'&page='+page+'&size='+size)
     .map(resp=>resp.json());
   }
 

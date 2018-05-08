@@ -9,6 +9,8 @@ import {AmenagementChantier} from "./AmenagementChantier.model";
 import {CompteRendu} from "../doc/CompteRendu.model";
 import {HygieneProprete} from "./HygieneProprete.model";
 import {Observation} from "./Observation.model";
+import {VisiteurModel} from "../user/Visiteur.model";
+import {AgentModel} from "../user/Agent.model";
 /**
  * Created by Admin on 30/04/2018.
  */
@@ -21,8 +23,8 @@ export class VisiteHs{
   dateVisite:Date=null;
   ordreViste:String="";
   natureTravaux:string="";
-  visiteurs:Array<String>=null;
-  Agents_Visites:Array<String>=null;
+  visiteurs:Array<VisiteurModel>=null; 
+  agents:Array<AgentModel>=null;
 
   user:User=null;
   compteRendu:CompteRendu=null;

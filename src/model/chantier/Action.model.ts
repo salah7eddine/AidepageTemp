@@ -7,7 +7,7 @@ export class Action{
   id_action:number=null;
   object:string="";
   statut:string="";
-  echeance:string="";
+  echeance:Date=new Date();//TODO change the value
 
   chantier:Chantier=null;
 

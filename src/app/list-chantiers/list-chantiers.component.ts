@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import "rxjs/add/operator/map";
-import {ChantierService} from "../../services/Chantier.service";
+import {ChantierService} from "../../services/chantier/Chantier.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Chantier} from "../../model/chantier/Chantier.model.";
 import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
@@ -26,7 +26,7 @@ export class ListChantiersComponent implements OnInit {
   chantiers:any=null;
 
 
-  constructor(public http:Http,public chantierservice:ChantierService,public router:Router,public activatedRoute:ActivatedRoute) { }
+  constructor(public http:Http,public chantierservice:ChantierService,public router:Router) { }
 
   ngOnInit() {
     this.chantierservice.getChantierss().subscribe(data=>{

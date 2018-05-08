@@ -4,11 +4,12 @@ import {EtatCompteRendu} from "./EtatCompteRendu.model";
  */
 export class CompteRendu{
   id_compte_rendu:number=null;
-  dateCreation:Date=null;
+  dateCreation:Date=new Date();
 
   etatCompteRendu:EtatCompteRendu=null;
 
-  constructor(etatCompteRendu:EtatCompteRendu){
-    this.etatCompteRendu=etatCompteRendu;
+  constructor(){
+    this.etatCompteRendu=new EtatCompteRendu();
+    this.etatCompteRendu.id_etat=1;//TODO delete
   }
 }

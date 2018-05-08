@@ -4,12 +4,12 @@
 
 export class AttitudeUrgence{
   id_att:number=null;
-  numeroUtile:string="";
-  consigneEvacuation:string="";
-  listSauvSec:string="";
-  connaissanceAttUrg:string="";
-  boitePharmacie:string="";
-  moyenExtinctionFeu:string="";
+  numero_utile:string="";
+  consigne_evacuation:string="";
+  list_sauv_sec:string="";
+  connaissance_att_urg:string="";
+  boite_pharmacie:string="";
+  moyen_extinction_feu:string="";
 
   constructor(){
 

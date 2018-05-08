@@ -4,12 +4,12 @@
 export class AmenagementChantier{
 
   id_amenag_chantier:number=null;
-  installationChantier:string="";
-  baseVie:string="";
-  aireStockage:string="";
-  planCirculation:string="";
-  distanceSecurite:string="";
-  bassinRetention:string="";
+  installation_chantier:string="";
+  base_vie:string="";
+  aire_stockage:string="";
+  plan_circulation:string="";
+  distance_securite:string="";
+  bassin_retention:string="";
 
   constructor(){
 
