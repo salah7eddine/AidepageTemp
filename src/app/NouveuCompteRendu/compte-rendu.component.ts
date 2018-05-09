@@ -157,11 +157,11 @@ export class CompteRenduComponent implements OnInit {
   }
 
   saveCpteRendu() {
-    this.saveObseration();
+    this.saveCompteR();
 
   }
 
-  private saveObseration() {
+  private saveCompteR() {
 
     this.documentChantierService.saveDocumentChantier(this.documentChantier).subscribe(data=> {
       this.documentChantier = data;

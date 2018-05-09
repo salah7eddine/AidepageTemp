@@ -4,7 +4,7 @@
 
 export class Fonction{
   id:number=null;
-  fonction:String;
+  fonction:String="";
 
 
   constructor() {
