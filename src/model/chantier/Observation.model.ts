@@ -8,7 +8,7 @@ import {VisiteHs} from "./VisiteHs.model";
 export class Observation{
 
   id_observation:number=0;
-  descObservation:string="";
+  desc_observation:string="";
 
   visiteHs:VisiteHs=null;
   typeObservation:TypeObservation=null;
