@@ -1,24 +1,41 @@
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Service} from "../../model/chantier/Service.model";
+import {HttpHeaders, HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ServiceService{
   private host: string = 'http://localhost:8080/';
-  constructor(private http:Http){}
+  private jwt = null;
+
+  constructor(private http:HttpClient){}
 
 
   getServices(){
-    return this.http.get(this.host+'services').map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host+'services',{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
-  getService(id:number){return this.http.get(this.host+'service/'+id).map(resp=>resp.json());}
+  getService(id:number){
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host+'service/'+id,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
 
 
 
-  getEntites(){return this.http.get(this.host+'entites').map(resp=>resp.json());}
+  getEntites(){
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host+'entites',{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
 
-  saveService(service:Service){return this.http.post(this.host+'service',service).map(resp=>resp.json());}
+  saveService(service:Service){
+    if (this.jwt == null) this.loadToken();
+    return this.http.post(this.host+'service',service,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
+
+  loadToken() {
+    this.jwt = localStorage.getItem('token');
+  }
 
 }
 

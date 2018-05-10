@@ -1,6 +1,6 @@
-import {Http} from "@angular/http";
 import {AmenagementChantier} from "../../model/chantier/AmenagementChantier.model";
 import {Injectable} from "@angular/core";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 /**
  * Created by Admin on 06/05/2018.
  */
@@ -8,16 +8,23 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class AmenagementChantierService {
   private host:string = 'http://localhost:8080/';
+  private jwt = null;
 
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
   }
 
   getAmenagementChantiers() {
-    return this.http.get(this.host + 'amenagementChantier').map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'amenagementChantier',{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
   saveAmenagementChantier(amenagementChantier:AmenagementChantier) {
-    return this.http.post(this.host + 'amenagementChantier', amenagementChantier).map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.post(this.host + 'amenagementChantier', amenagementChantier,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
+
+  loadToken() {
+    this.jwt = localStorage.getItem('token');
   }
 
 }

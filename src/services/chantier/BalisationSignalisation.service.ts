@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {BalisageSignalisation} from "../../model/chantier/BalisageSignalisation.model";
+import {HttpHeaders, HttpClient} from "@angular/common/http";
 /**
  * Created by Admin on 06/05/2018.
  */
@@ -8,16 +9,23 @@ import {BalisageSignalisation} from "../../model/chantier/BalisageSignalisation.
 @Injectable()
 export class BalisationSignalisationService {
   private host:string = 'http://localhost:8080/';
+  private jwt = null;
 
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
   }
 
   getBalisageSignalisations() {
-    return this.http.get(this.host + 'balisageSignalisations').map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'balisageSignalisations',{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
   saveBalisageSignalisations(balisageSignalisations:BalisageSignalisation) {
-    return this.http.post(this.host + 'balisageSignalisation', balisageSignalisations).map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.post(this.host + 'balisageSignalisation', balisageSignalisations,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
+
+  loadToken() {
+    this.jwt = localStorage.getItem('token');
   }
 
 }

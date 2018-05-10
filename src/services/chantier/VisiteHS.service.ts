@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {VisiteHs} from "../../model/chantier/VisiteHs.model";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 /**
  * Created by Admin on 30/04/2018.
  */
@@ -8,24 +9,33 @@ import {VisiteHs} from "../../model/chantier/VisiteHs.model";
 @Injectable()
 export class VisiteService{
   private host: string = 'http://localhost:8080/';
+  private jwt = null;
 
-  constructor(private http:Http){}
+  constructor(private http:HttpClient){}
 
   getReponse(){
-    return this.http.get(this.host + 'reponses')
-      .map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'reponses',{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
   getVisites(){
-    return this.http.get(this.host + 'VisiteHs')
-      .map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'VisiteHs',{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
 
-  getVisite(id:number){return this.http.get(this.host + 'VisiteHs/' +id).map(resp=>resp.json());}
+  getVisite(id:number){
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'VisiteHs/' +id,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
 
   saveVisite(visite:VisiteHs){
-    return this.http.post(this.host+'visiteHs',visite).map(resp=>resp.json());
+    if (this.jwt == null) this.loadToken();
+    return this.http.post(this.host+'visiteHs',visite,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
+
+  loadToken() {
+    this.jwt = localStorage.getItem('token');
   }
 
 

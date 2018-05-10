@@ -8,6 +8,7 @@ import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
 import {Service} from "../../model/chantier/Service.model";
 import {Entitie} from "../../model/chantier/Entitie.model";
 import {TypeChantier} from "../../model/chantier/TypeChantier.model";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-list-chantiers',
@@ -26,7 +27,7 @@ export class ListChantiersComponent implements OnInit {
   chantiers:any=null;
 
 
-  constructor(public http:Http,public chantierservice:ChantierService,public router:Router) { }
+  constructor(public http:HttpClient,public chantierservice:ChantierService,public router:Router) { }
 
   ngOnInit() {
     this.chantierservice.getChantierss().subscribe(data=>{
@@ -39,8 +40,10 @@ export class ListChantiersComponent implements OnInit {
 
   doSearch(){
     this.chantierservice.getChantiers(this.motCle,this.currentPage, this.size).subscribe(data=>{
-      this.pageChantiers=data;
-      this.pages=new Array(data.totalPages);
+
+      console.log(data);
+      this.pageChantiers=JSON.parse(JSON.stringify(data));
+      this.pages=new Array(JSON.parse(JSON.stringify(data)).totalPages);
     },err=>{
       console.log(err);
     })

@@ -30,19 +30,19 @@ export class NouveauChantierComponent implements OnInit {
   ngOnInit() {
 
     this.typeChantiesService.getTypeChantiers().subscribe(TypeChantiers=>{
-      this.typeChantiers=TypeChantiers;
+      this.typeChantiers=JSON.parse(JSON.stringify(TypeChantiers));
     },err=>{
       console.log(err);
     });
 
     this.entrepriseStService.getEntrepriseSt().subscribe(EntrepriseSt=>{
-      this.EntrepriseSt=EntrepriseSt;
+      this.EntrepriseSt=JSON.parse(JSON.stringify(EntrepriseSt));
     },err=>{
       console.log(err);
     });
 
     this.serviceService.getServices().subscribe(Services=>{
-      this.Services=Services;
+      this.Services=JSON.parse(JSON.stringify(Services));
     },err=>{
       console.log(err);
     })
