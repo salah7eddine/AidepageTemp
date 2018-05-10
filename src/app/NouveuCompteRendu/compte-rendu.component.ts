@@ -164,27 +164,27 @@ export class CompteRenduComponent implements OnInit {
   private saveCompteR() {
 
     this.documentChantierService.saveDocumentChantier(this.documentChantier).subscribe(data=> {
-      this.documentChantier = JSON.parse(JSON.stringify(data));;
+      this.documentChantier = JSON.parse(JSON.stringify(data));
       this.amenagementChantierService.saveAmenagementChantier(this.amenagementChantier).subscribe(data1=>{
-        this.amenagementChantier=JSON.parse(JSON.stringify(data1));;
+        this.amenagementChantier=JSON.parse(JSON.stringify(data1));
         this.hygienePropreteService.saveHygiennePropreteService(this.hygieneProprete).subscribe(data2=>{
-          this.hygieneProprete = JSON.parse(JSON.stringify(data2));;
+          this.hygieneProprete = JSON.parse(JSON.stringify(data2));
           this.balisationSignalisationService.saveBalisageSignalisations(this.balisageSignalisation).subscribe(data3=>{
-            this.balisageSignalisation=JSON.parse(JSON.stringify(data3));;
+            this.balisageSignalisation=JSON.parse(JSON.stringify(data3));
             this.rqsService.saveRqs(this.rqs).subscribe(data4=>{
-              this.rqs=JSON.parse(JSON.stringify(data4));;
+              this.rqs=JSON.parse(JSON.stringify(data4));
               this.epcEpiService.saveEpcEpi(this.epcEpi).subscribe(data5=>{
-                this.epcEpi=JSON.parse(JSON.stringify(data5));;
+                this.epcEpi=JSON.parse(JSON.stringify(data5));
                 this.attitudeUrgenceService.saveAttitudeUrgence(this.attitudeUrgence).subscribe(data6=>{
-                  this.attitudeUrgence=JSON.parse(JSON.stringify(data6));;
+                  this.attitudeUrgence=JSON.parse(JSON.stringify(data6));
                   this.compteRenduService.saveCompteRendu(this.compteRendu).subscribe(data7=>{
-                    this.compteRendu=JSON.parse(JSON.stringify(data7));;
+                    this.compteRendu=JSON.parse(JSON.stringify(data7));
                     this.initVisit();
                     this.visiteService.saveVisite(this.visiteHS).subscribe(data8=>{
-                      this.visiteHS=JSON.parse(JSON.stringify(data8));;
+                      this.visiteHS=JSON.parse(JSON.stringify(data8));
                       this.observation.visiteHs=this.visiteHS;
                       this.observationService.saveObservation(this.observation).subscribe(data9=>{
-                        this.observation=JSON.parse(JSON.stringify(data9));;
+                        this.observation=JSON.parse(JSON.stringify(data9));
                         console.log(this.observation);
                       })
                     })

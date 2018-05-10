@@ -1,0 +1,50 @@
+<div class="content">
+  <section class="content-header">
+    <h1>
+      List des users
+      <small>Users</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a routerLink="/home"><i class="fa fa-dashboard"></i>Home</a></li>
+      <li><a routerLink="/listUsers"><i class="fa fa-dashboard"></i>  List des users</a></li>
+    </ol>
+  </section>
+
+  <div class="content spacer">
+    <div class="form-group">
+      <label>Mot Clé :</label>
+      <input type="text" [(ngModel)]="motCle"/>
+      <button class="btn btn-primary" (click)="chercherUsers()">Chercher</button>
+    </div>
+
+
+    <table class=" content table table-striped">
+      <tr>
+        <th>ID</th><th>pseudoName </th><th>email</th><th>num</th><th>dateCreation</th><th>photo</th><th>Fonction</th>
+      </tr>
+      <tr *ngFor="let u of pageUsers?.content">
+        <td>{{u.id_user}}</td>
+        <td>{{u.pseudoName}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.num}}</td>
+        <td>{{u.dateCreation}}</td>
+        <td>{{u.photo}}</td>
+        <td>{{u.fct.fontion}}</td>
+        <td>
+          <a (click)="onEditUser(u.id_user)" class="clickable">Modifier</a>
+        </td>
+        <td>
+          <a (click)="onDeleteUser(u)" class="clickable">Supprimer</a>
+        </td>
+      </tr>
+    </table>
+    <div class="content">
+      <ul class="nav nav-pills">
+        <li [ngClass]="{active:i==currentPage}" *ngFor="let p of pages; let i=index">
+          <a class="clickable" (click)="gotoPage(i)">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

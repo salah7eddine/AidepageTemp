@@ -1,0 +1,22 @@
+
+<form #f="ngForm" class="blocOmbre" name="identification" (ngSubmit)="onLogin(f.value)">
+  <h3>S'authentifier:</h3>
+  <div class="danger" *ngIf="mode==1">
+    <strong></strong>
+  </div>
+  <div><label for="login"> Login :</label></div>
+  <input type="text" name="pseudoName" ngModel="" id="login" required/><br/><br/>
+  <div><label for="password">Mot de passe :</label></div>
+  <input type="password" name="password" ngModel="" id="password" required/><br/><br/>
+
+
+  <div class="alert alert-danger" *ngIf="mode==1">
+    <strong>Nom d'utilisateur ou mot de pass invalide</strong>
+  </div>
+  <div class="ligne">
+    <a title="Identifiants oubliés"></a>
+  </div>
+  <button type="submit" class="btn couleur" title="Valider" [disabled]="!f.valid">Valider</button>
+  <br/><br/>
+
+</form>
