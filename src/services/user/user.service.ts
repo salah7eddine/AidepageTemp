@@ -47,11 +47,14 @@ export class UserService{
   saveUser(user:User){
     if (this.jwt == null) this.loadToken();
     return this.http.post(this.host+'user',user,{headers: new HttpHeaders({'Authorization': this.jwt})});
+
   }
 
   saveVisiteur(visiteur:VisiteurModel){
     if (this.jwt == null) this.loadToken();
     return this.http.post(this.host+'visiteur',visiteur,{headers: new HttpHeaders({'Authorization': this.jwt})});
+
+
   }
 
   saveAgent(agent:AgentModel){

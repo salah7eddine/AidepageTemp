@@ -11,7 +11,7 @@ export class User{
   num:number;
   password:string;
   dateCreation:Date=null;
-  photo:File=null;
+  photo:String=null;
   fonction:Fonction;
 
   constructor(fonction:Fonction){

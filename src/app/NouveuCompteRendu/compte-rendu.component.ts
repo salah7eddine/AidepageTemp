@@ -198,6 +198,7 @@ export class CompteRenduComponent implements OnInit {
     })
     this.actionChantierService.saveActionChantier(this.action).subscribe(data=>{
       this.action=JSON.parse(JSON.stringify(data));
+      console.log(this.action);
     },err=>{
       console.log(err);
     });

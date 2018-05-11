@@ -12,15 +12,35 @@ export class NouveauUserComponent implements OnInit {
 
   public newUser:User=new User(new Fonction());
   fonctions:any = null;
+  base64textString: string;
+
   constructor(public userservice:UserService) { }
 
   ngOnInit() {
     this.userservice.getFonctions().subscribe(data=>{
-      this.fonctions=JSON.parse(JSON.stringify(data));;
+      this.fonctions=JSON.parse(JSON.stringify(data));
     },err=>{
       console.log(err);
     });
 
+  }
+
+  handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    var file = files[0];
+
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = this._handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
   }
 
   onSaveUser(dataForm){
@@ -30,18 +50,20 @@ export class NouveauUserComponent implements OnInit {
       this.newUser.num=dataForm.num;
       this.newUser.password=dataForm.password;
       this.newUser.dateCreation=new Date();
-      this.newUser.photo=dataForm.photo;
+      this.newUser.photo=this.base64textString;
       this.newUser.fonction=dataForm.fonction;
 
       console.log(this.newUser);
       this.userservice.saveVisiteur(this.newUser).subscribe(data=>{
         console.log(data);
-      },err=>{
-        console.log(err);
+      },event=>{
+        console.log(event);
       });
       console.log(dataForm);
     }else{
       alert("vérifier le mot de passe");
     }
   }
+
+
 }
