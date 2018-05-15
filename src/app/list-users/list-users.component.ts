@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Fonction} from "../../model/user/Fonction.model";
 import {User} from "../../model/user/User.model";
 import {HttpHeaders, HttpClient} from "@angular/common/http";
+import {AuthentificationService} from "../../services/user/authentification.service";
 
 @Component({
   selector: 'app-list-users',
@@ -20,12 +21,14 @@ export class ListUsersComponent implements OnInit {
   pages:Array<number>;
   users:any=null;
 
-  constructor(public http:HttpClient,public userService:UserService,public router:Router) { }
+  constructor(public http:HttpClient,public userService:UserService,public router:Router,private authService:AuthentificationService) { }
 
   ngOnInit() {
     this.userService.getusers().subscribe(data=>{
       this.users=JSON.parse(JSON.stringify(data));
     },err=>{
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
       console.log(err);
     })
   }
@@ -37,6 +40,8 @@ export class ListUsersComponent implements OnInit {
       this.pages=new Array(JSON.parse(JSON.stringify(data)).totalPages);
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     })
   }
 
@@ -67,6 +72,8 @@ export class ListUsersComponent implements OnInit {
         );
       },err=>{
         console.log(err);
+        this.authService.logout();
+        this.router.navigateByUrl('/login');
       })
     }
 

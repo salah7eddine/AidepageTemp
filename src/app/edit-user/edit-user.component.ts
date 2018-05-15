@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Fonction} from "../../model/user/Fonction.model";
 import {User} from "../../model/user/User.model";
 import {UserService} from "../../services/user/user.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthentificationService} from "../../services/user/authentification.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -16,7 +17,7 @@ export class EditUserComponent implements OnInit {
   public user:User=new User(new Fonction() );
   id:any=0;
 
-  constructor(public activatedRoute:ActivatedRoute, public userservice:UserService) {
+  constructor(public activatedRoute:ActivatedRoute, public userservice:UserService,public router:Router,private authService:AuthentificationService) {
     this.id=activatedRoute.snapshot.params['id'];
   }
 
@@ -25,12 +26,18 @@ export class EditUserComponent implements OnInit {
       this.user=JSON.parse(JSON.stringify(dataUser));
     },err=>{
       console.log(err);
-    })
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
+    });
     this.userservice.getFonctions().subscribe(data=>{
       this.fonctions=JSON.parse(JSON.stringify(data));
     },err=>{
       console.log(err);
-    })
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
+    });
   }
 
 }

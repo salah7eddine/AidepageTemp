@@ -1,19 +1,21 @@
-<app-appheader></app-appheader>
+<app-appheader  *ngIf="isLoggedIn$" ></app-appheader>
 <section class="content">
   <div class="content-wrapper">
     <router-outlet></router-outlet>
   </div>
 </section>
 
-<app-appmenu></app-appmenu>
+<app-appmenu  *ngIf="isLoggedIn$" ></app-appmenu>
 
 <!-- Content Wrapper. Contains page content -->
 
   <!-- Content Header (Page header) -->
 
 
-  <!-- Main content -->
+  <!-- Main content
+   il faut chercher ou le pb dans async ::: *ngIf="isLoggedIn$ | async"
+   -->
 
 
-<app-appsettings></app-appsettings>
-<app-appfooter></app-appfooter>
+<app-appsettings  *ngIf="isLoggedIn$" ></app-appsettings>
+<app-appfooter *ngIf="isLoggedIn$" ></app-appfooter>

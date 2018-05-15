@@ -37,6 +37,8 @@ import {CompteRenduService} from "../../services/doc/CompteRendu.service";
 import {ObservationService} from "../../services/chantier/Observation.service";
 import {TypeObservationService} from "../../services/chantier/TypeObseravtions.service";
 import {ActionChantierService} from "../../services/chantier/ActionChantierService";
+import {Router} from "@angular/router";
+import {AuthentificationService} from "../../services/user/authentification.service";
 
 @Component({
   selector: 'app-compte-rendu',
@@ -96,6 +98,8 @@ export class CompteRenduComponent implements OnInit {
               public observationService:ObservationService,
               public typeObservationService:TypeObservationService,
               public actionChantierService:ActionChantierService,
+              public router:Router,
+              public authService:AuthentificationService
   ) {
   }
 
@@ -104,54 +108,72 @@ export class CompteRenduComponent implements OnInit {
     this.visiteService.getReponse().subscribe(data=> {
       this.reponse = data;
     }, err=> {
-      console.log(err)
+      console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.chantierService.getChantierss().subscribe(data=> {
       this.chantiers = data;
     }, err=> {
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.typeChantiesService.getTypeChantiers().subscribe(TypeChantiers=> {
       this.typeChantiers = TypeChantiers;
     }, err=> {
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.entrepriseStService.getEntrepriseSt().subscribe(EntrepriseSt=> {
       this.EntrepriseSt = EntrepriseSt;
     }, err=> {
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.serviceService.getServices().subscribe(Services=> {
       this.Services = Services;
     }, err=> {
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.userservice.getFonctions().subscribe(Fonctions=> {
       this.fonction = Fonctions;
     }, err=> {
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.userservice.getagents().subscribe(agents=>{
       this.agents=agents;
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
     this.userservice.getvisiteurs().subscribe(visiteurs=>{
       this.visiteurs=visiteurs;
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
     this.typeObservationService.getTypeObservations().subscribe(typeOb=>{
       this.typeObservations=typeOb;
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     })
 
   }
@@ -201,6 +223,8 @@ export class CompteRenduComponent implements OnInit {
       console.log(this.action);
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
   }
   initVisit(){

@@ -28,7 +28,10 @@
         <td>{{u.email}}</td>
         <td>{{u.num}}</td>
         <td>{{u.dateCreation}}</td>
-        <td>{{u.photo}}</td>
+        <td>
+          <img style='display:block; width:100px;height:100px;' id='base64image'
+               src="data:image/jpeg;base64,{{u.photo}}" />
+        </td>
         <td>{{u.fct.fontion}}</td>
         <td>
           <a (click)="onEditUser(u.id_user)" class="clickable">Modifier</a>

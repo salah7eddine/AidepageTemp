@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from "@angular/http";
 import "rxjs/add/operator/map";
 import {ChantierService} from "../../services/chantier/Chantier.service";
 import {Router, ActivatedRoute} from "@angular/router";
@@ -9,6 +8,7 @@ import {Service} from "../../model/chantier/Service.model";
 import {Entitie} from "../../model/chantier/Entitie.model";
 import {TypeChantier} from "../../model/chantier/TypeChantier.model";
 import {HttpClient} from "@angular/common/http";
+import {AuthentificationService} from "../../services/user/authentification.service";
 
 @Component({
   selector: 'app-list-chantiers',
@@ -27,25 +27,30 @@ export class ListChantiersComponent implements OnInit {
   chantiers:any=null;
 
 
-  constructor(public http:HttpClient,public chantierservice:ChantierService,public router:Router) { }
+  constructor(public http:HttpClient,public chantierservice:ChantierService,public router:Router,private authService:AuthentificationService) { }
 
   ngOnInit() {
     this.chantierservice.getChantierss().subscribe(data=>{
       this.chantiers=data;
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
     })
 
   }
 
   doSearch(){
     this.chantierservice.getChantiers(this.motCle,this.currentPage, this.size).subscribe(data=>{
-
       console.log(data);
       this.pageChantiers=JSON.parse(JSON.stringify(data));
       this.pages=new Array(JSON.parse(JSON.stringify(data)).totalPages);
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
     })
   }
 
@@ -75,6 +80,8 @@ export class ListChantiersComponent implements OnInit {
         );
       },err=>{
         console.log(err);
+        this.authService.logout();
+        this.router.navigateByUrl('/login');
       })
     }
 

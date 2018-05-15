@@ -1,16 +1,25 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {JwtHelper} from 'angular2-jwt';
+import {BehaviorSubject} from "rxjs/Rx";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class AuthentificationService {
   private host: string = 'http://localhost:8080/';
   private roles: Array<any> = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http:HttpClient){
+  }
+
+  private loggedIn = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+    console.log(this.loggedIn.asObservable());
+    return this.loggedIn.asObservable();
   }
 
   login(user) {
+    this.loggedIn.next(true);
     return this.http.post(this.host + 'login', user, {observe: 'response'});
   }
 
@@ -22,11 +31,29 @@ export class AuthentificationService {
   }
 
   logout() {
+    this.loggedIn.next(false);
     localStorage.clear();
   }
 
-  isLoggedIn() {
-    return (localStorage.getItem('token') != null);
+  isAdmin(){
+    for (let r of this.roles){
+      if(r.authority=='ADMIN') return true;
+    }
+    return false;
+  }
+
+  isAps(){
+    for (let r of this.roles){
+      if(r.authority=='APS') return true;
+    }
+    return false;
+  }
+
+  isUser(){
+    for (let r of this.roles){
+      if(r.authority=='USER') return true;
+    }
+    return false;
   }
 
 }

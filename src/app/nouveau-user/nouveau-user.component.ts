@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../model/user/User.model";
 import {UserService} from "../../services/user/user.service";
-import {Fonction} from "../../model/user/Fonction.model";
+import {Router} from "@angular/router";
+import {AuthentificationService} from "../../services/user/authentification.service";
 
 @Component({
   selector: 'app-nouveau-user',
@@ -10,17 +10,18 @@ import {Fonction} from "../../model/user/Fonction.model";
 })
 export class NouveauUserComponent implements OnInit {
 
-  public newUser:User=new User(new Fonction());
   fonctions:any = null;
   base64textString: string;
 
-  constructor(public userservice:UserService) { }
+  constructor(public userservice:UserService,public router:Router,private authService:AuthentificationService) { }
 
   ngOnInit() {
     this.userservice.getFonctions().subscribe(data=>{
       this.fonctions=JSON.parse(JSON.stringify(data));
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     });
 
   }
@@ -45,21 +46,12 @@ export class NouveauUserComponent implements OnInit {
 
   onSaveUser(dataForm){
     if(dataForm.password==dataForm.password2){
-      this.newUser.pseudoName=dataForm.pseudoName;
-      this.newUser.email=dataForm.email;
-      this.newUser.num=dataForm.num;
-      this.newUser.password=dataForm.password;
-      this.newUser.dateCreation=new Date();
-      this.newUser.photo=this.base64textString;
-      this.newUser.fonction=dataForm.fonction;
 
-      console.log(this.newUser);
-      this.userservice.saveVisiteur(this.newUser).subscribe(data=>{
+      this.userservice.saveVisiteur(dataForm).subscribe(data=>{
         console.log(data);
-      },event=>{
-        console.log(event);
+      },err=>{
+        console.log(JSON.parse(err._body).message);
       });
-      console.log(dataForm);
     }else{
       alert("vérifier le mot de passe");
     }

@@ -9,6 +9,7 @@ import {EntrepriseSt} from "../../model/chantier/EntrepriseSt.model";
 import {Service} from "../../model/chantier/Service.model";
 import {Entitie} from "../../model/chantier/Entitie.model";
 import {TypeChantier} from "../../model/chantier/TypeChantier.model";
+import {AuthentificationService} from "../../services/user/authentification.service";
 
 @Component({
   selector: 'app-edit-chantier',
@@ -25,7 +26,7 @@ export class EditChantierComponent implements OnInit {
   Services:any=null;
 
   constructor(public activatedRoute:ActivatedRoute,public chantierService:ChantierService,public router:Router,public typeChantiesService:TypeChantiesService,
-              public entrepriseStService:EntrepriseStService,public serviceService:ServiceService) {
+              public entrepriseStService:EntrepriseStService,public serviceService:ServiceService,private authService:AuthentificationService) {
 
     this.id=activatedRoute.snapshot.params['id'];
   }
@@ -36,24 +37,35 @@ export class EditChantierComponent implements OnInit {
       this.chantier=JSON.parse(JSON.stringify(Chantier));
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
     });
 
     this.typeChantiesService.getTypeChantiers().subscribe(TypeChantiers=>{
       this.typeChantiers=JSON.parse(JSON.stringify(Chantier));
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
     });
 
     this.entrepriseStService.getEntrepriseSt().subscribe(EntrepriseSt=>{
       this.EntrepriseSt=JSON.parse(JSON.stringify(EntrepriseSt));
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+
     });
 
     this.serviceService.getServices().subscribe(Services=>{
       this.Services=JSON.parse(JSON.stringify(Services));
     },err=>{
       console.log(err);
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
     })
 
   }
