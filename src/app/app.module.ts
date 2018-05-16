@@ -59,7 +59,6 @@ const routes:Routes = [
   {path:'listUsers',component:ListUsersComponent},
   {path:'editUser/:id',component:EditUserComponent},
   {path:'login',component:AuthentificationComponent},
-
   {path: '',redirectTo:'/login',pathMatch:'full'}
 
 ];

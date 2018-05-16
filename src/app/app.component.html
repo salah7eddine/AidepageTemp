@@ -1,11 +1,11 @@
-<app-appheader  *ngIf="isLoggedIn$" ></app-appheader>
-<section class="content">
+<app-appheader  *ngIf="isLoggedIn$ | async" ></app-appheader>
+<section *ngIf="isLoggedIn$" class="content">
   <div class="content-wrapper">
     <router-outlet></router-outlet>
   </div>
 </section>
 
-<app-appmenu  *ngIf="isLoggedIn$" ></app-appmenu>
+<app-appmenu  *ngIf="isLoggedIn$ | async" ></app-appmenu>
 
 <!-- Content Wrapper. Contains page content -->
 
@@ -13,9 +13,11 @@
 
 
   <!-- Main content
-   il faut chercher ou le pb dans async ::: *ngIf="isLoggedIn$ | async"
+   il faut chercher ou le pb dans *ngIf="isLoggedIn$ | async"
    -->
 
 
-<app-appsettings  *ngIf="isLoggedIn$" ></app-appsettings>
-<app-appfooter *ngIf="isLoggedIn$" ></app-appfooter>
+<app-appsettings  *ngIf="isLoggedIn$ | async" ></app-appsettings>
+<app-appfooter *ngIf="isLoggedIn$ | async " ></app-appfooter>
+
+<app-authentification *ngIf="isLoggedIn$==false"></app-authentification>
