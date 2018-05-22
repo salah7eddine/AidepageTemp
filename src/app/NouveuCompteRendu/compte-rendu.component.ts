@@ -49,8 +49,8 @@ export class CompteRenduComponent implements OnInit {
 
 
   user:User = new User(new Fonction());
-  compteRendu:CompteRendu = new CompteRendu();
-    chantier:Chantier = new Chantier(new EntrepriseSt(), new Service(new Entitie()), new TypeChantier());
+  compteRendu:CompteRendu = new CompteRendu(new EtatCompteRendu());
+  chantier:Chantier = new Chantier(new EntrepriseSt(), new Service(new Entitie()), new TypeChantier());
   balisageSignalisation:BalisageSignalisation = new BalisageSignalisation();
   attitudeUrgence:AttitudeUrgence = new AttitudeUrgence();
   documentChantier:DocumentChantier = new DocumentChantier();
@@ -69,7 +69,7 @@ export class CompteRenduComponent implements OnInit {
   /* -----Action-------- */
   action:Action = new Action(this.visiteHS.chantier);
 
-
+  name:any = null;
   reponse:any = null;
   chantiers:any = null;
   typeChantiers:any = null;
@@ -81,7 +81,8 @@ export class CompteRenduComponent implements OnInit {
   typeObservations:any = null;
 
 
-  constructor(public visiteService:VisiteService,
+  constructor(public userService:UserService,
+              public visiteService:VisiteService,
               public typeChantiesService:TypeChantiesService,
               public entrepriseStService:EntrepriseStService,
               public serviceService:ServiceService,
@@ -104,6 +105,13 @@ export class CompteRenduComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.name=localStorage.getItem('username');
+    this.userService.getUserByName(this.name).subscribe(data=>{
+      this.user=JSON.parse(JSON.stringify(data));
+    },err=>{
+      console.log(err);
+    });
 
     this.visiteService.getReponse().subscribe(data=> {
       this.reponse = data;
@@ -180,7 +188,6 @@ export class CompteRenduComponent implements OnInit {
 
   saveCpteRendu() {
     this.saveCompteR();
-
   }
 
   private saveCompteR() {
@@ -201,13 +208,22 @@ export class CompteRenduComponent implements OnInit {
                   this.attitudeUrgence=JSON.parse(JSON.stringify(data6));
                   this.compteRenduService.saveCompteRendu(this.compteRendu).subscribe(data7=>{
                     this.compteRendu=JSON.parse(JSON.stringify(data7));
+                    this.name=localStorage.getItem('username');
+                    this.userservice.getUserByName(this.name).subscribe(data10=>{
+                      this.user=JSON.parse(JSON.stringify(data10));
+                      this.visiteHS.user=this.user;
+                      console.log(this.user);
                     this.initVisit();
                     this.visiteService.saveVisite(this.visiteHS).subscribe(data8=>{
                       this.visiteHS=JSON.parse(JSON.stringify(data8));
-                      this.observation.visiteHs=this.visiteHS;
-                      this.observationService.saveObservation(this.observation).subscribe(data9=>{
-                        this.observation=JSON.parse(JSON.stringify(data9));
-                        console.log(this.observation);
+
+                        this.observation.visiteHs=this.visiteHS;
+                        this.observationService.saveObservation(this.observation).subscribe(data9=>{
+                          this.observation=JSON.parse(JSON.stringify(data9));
+                          console.log(this.observation);
+                          console.log(this.agents);
+                          console.log(this.visiteurs);
+                        })
                       })
                     })
                   })
@@ -226,6 +242,7 @@ export class CompteRenduComponent implements OnInit {
       this.authService.logout();
       this.router.navigateByUrl('/login');
     });
+
   }
   initVisit(){
     this.visiteHS = new VisiteHs(this.user, this.compteRendu,

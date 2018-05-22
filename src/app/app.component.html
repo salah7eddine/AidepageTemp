@@ -1,11 +1,11 @@
-<app-appheader  *ngIf="isLoggedIn$ | async" ></app-appheader>
-<section *ngIf="isLoggedIn$" class="content">
+<app-appheader  *ngIf="authService.isLoggedIn()" ></app-appheader>
+<section *ngIf="authService.isLoggedIn()" class="content">
   <div class="content-wrapper">
     <router-outlet></router-outlet>
   </div>
 </section>
 
-<app-appmenu  *ngIf="isLoggedIn$ | async" ></app-appmenu>
+<app-appmenu *ngIf="authService.isLoggedIn()"></app-appmenu>
 
 <!-- Content Wrapper. Contains page content -->
 
@@ -17,7 +17,7 @@
    -->
 
 
-<app-appsettings  *ngIf="isLoggedIn$ | async" ></app-appsettings>
-<app-appfooter *ngIf="isLoggedIn$ | async " ></app-appfooter>
+<app-appsettings *ngIf="authService.isLoggedIn()" ></app-appsettings>
+<app-appfooter *ngIf="authService.isLoggedIn()"></app-appfooter>
 
-<app-authentification *ngIf="isLoggedIn$==false"></app-authentification>
+<app-authentification *ngIf="!authService.isLoggedIn()"></app-authentification>

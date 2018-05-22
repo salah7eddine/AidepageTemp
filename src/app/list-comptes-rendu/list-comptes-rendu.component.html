@@ -1,16 +1,41 @@
 <div class="content">
   <section class="content-header">
     <h1>
-      List des comptes Rendu
-      <small>chantiers</small>
+      List des visites
+      <small>Visites</small>
     </h1>
     <ol class="breadcrumb">
       <li><a routerLink="/home"><i class="fa fa-dashboard"></i>Home</a></li>
-      <li><a routerLink="/listChantiers"> List des comptes Rendu</a></li>
+      <li><a routerLink="/listComptesRendu"> List des visites</a></li>
     </ol>
   </section>
   <div class="content spacer">
-
+   <table id="Tab_CpteRendu" class="table table-striped">
+     <thead>
+     <tr>
+       <th>ID</th><th>Ordre de Visite </th><th>Date de visite</th><th>Chantier</th><th>Nature des travaux</th> <th>Etat du Compte Rendu</th> <th>Actions</th>
+     </tr>
+     </thead>
+     <tfoot>
+     <tr>
+       <th>ID</th><th>Ordre de Visite </th><th>Date de visite</th><th>Chantier</th><th>Nature des travaux</th> <th>Etat du Compte Rendu</th> <th>Actions</th>
+     </tr>
+     </tfoot>
+     <tbody>
+     <tr *ngFor="let v of pageVisite">
+       <td>{{v.id_viste}}</td>
+       <td>{{v.date_visite}}</td>
+       <td>{{v.ordre_viste}}</td>
+       <td>{{v.chantier.libelle_chantier}}</td>
+       <td>{{v.description}}</td>
+       <td><span class="label label-info">{{v.compteRendu.etatCompteRendu.libelle}}</span></td>
+       <td>
+         <a (click)="show(v.id_viste)" class="clickable">Details</a>
+       </td>
+     </tr>
+     </tbody>
+    </table>
   </div>
 
 </div>
+

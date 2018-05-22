@@ -8,18 +8,16 @@ import {AuthentificationService} from "../../services/user/authentification.serv
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent implements OnInit {
+  mode:number = 0;
 
   constructor(private authService:AuthentificationService, private router:Router) {
   }
-
-  mode:number = 0;
 
   ngOnInit() {
     this.authService.logout();
   }
 
   onLogin(user) {
-    console.log(user);
     this.authService.login(user).subscribe(resp => {
       let jwt = resp.headers.get('Authorization');
       this.authService.saveToken(jwt);

@@ -14,7 +14,8 @@ export class User{
   photo:String=null;
   fonction:Fonction;
 
+
   constructor(fonction:Fonction){
-    this.id_user=1; //TODO delete
+    this.fonction=fonction;
   }
 }

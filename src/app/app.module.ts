@@ -42,6 +42,7 @@ import {ActionChantierService} from "../services/chantier/ActionChantierService"
 import { AuthentificationComponent } from './authentification/authentification.component';
 import {AuthentificationService} from "../services/user/authentification.service";
 import {HttpClientModule} from "@angular/common/http";
+import { InfosCompteRenduComponent } from './infos-compte-rendu/infos-compte-rendu.component';
 
 
 const routes:Routes = [
@@ -58,6 +59,7 @@ const routes:Routes = [
   {path:'nouveauUser',component:NouveauUserComponent},
   {path:'listUsers',component:ListUsersComponent},
   {path:'editUser/:id',component:EditUserComponent},
+  {path:'infosCompteRendu/:id',component:InfosCompteRenduComponent},
   {path:'login',component:AuthentificationComponent},
   {path: '',redirectTo:'/login',pathMatch:'full'}
 
@@ -84,7 +86,8 @@ const routes:Routes = [
     NouveauUserComponent,
     ListUsersComponent,
     EditUserComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    InfosCompteRenduComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule

@@ -55,9 +55,9 @@
         </a>
       </li>
 
-      <!------------------------------------------------- -->
+      <!-----------------------Administration-------------------------- -->
 
-      <li class="treeview">
+      <li class="treeview" *ngIf="authService.isAdmin()">
         <a>
           <i class="fa fa-wrench"></i> <span>Administration</span>
           <span class="pull-right-container">

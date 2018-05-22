@@ -8,8 +8,8 @@ export class CompteRendu{
 
   etatCompteRendu:EtatCompteRendu=null;
 
-  constructor(){
-    this.etatCompteRendu=new EtatCompteRendu();
-    this.etatCompteRendu.id_etat=1;//TODO delete
+  constructor(etatCompteRendu:EtatCompteRendu){
+    this.etatCompteRendu=this.etatCompteRendu;
+   // this.etatCompteRendu.id_etat=1;//TODO delete
   }
 }

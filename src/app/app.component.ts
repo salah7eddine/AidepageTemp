@@ -8,12 +8,9 @@ import {Observable} from "rxjs/Rx";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  isLoggedIn$:any=null;
 
   constructor(public authService:AuthentificationService){}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
-    console.log(this.isLoggedIn$);
   }
 }

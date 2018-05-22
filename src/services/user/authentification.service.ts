@@ -11,17 +11,15 @@ export class AuthentificationService {
   constructor(private http:HttpClient){
   }
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
-
-  get isLoggedIn() {
-    console.log(this.loggedIn.asObservable());
-    return this.loggedIn.asObservable();
+  isLoggedIn() {
+    return (localStorage.getItem('token') != null);
   }
 
   login(user) {
-    this.loggedIn.next(true);
+   // this.loggedIn.next(true);
     return this.http.post(this.host + 'login', user, {observe: 'response'});
   }
+
 
   saveToken(jwt: string) {
     localStorage.setItem('token', jwt);
@@ -31,9 +29,10 @@ export class AuthentificationService {
   }
 
   logout() {
-    this.loggedIn.next(false);
+  //  this.loggedIn.next(false);
     localStorage.clear();
   }
+  id
 
   isAdmin(){
     for (let r of this.roles){

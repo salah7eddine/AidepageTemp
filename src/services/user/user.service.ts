@@ -1,9 +1,10 @@
-import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {User} from "../../model/user/User.model";
 import {VisiteurModel} from "../../model/user/Visiteur.model";
 import {AgentModel} from "../../model/user/Agent.model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs/Rx";
+import {VisiteHs} from "../../model/chantier/VisiteHs.model";
 /**
  * Created by Admin on 04/05/2018.
  */
@@ -18,6 +19,11 @@ export class UserService{
   getFonctions(){
     if (this.jwt == null) this.loadToken();
     return this.http.get(this.host+'fonctions',{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
+
+  getUserByName(name:string){
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host+'userName/'+name,{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
   getUser(id:number) {
@@ -67,7 +73,17 @@ export class UserService{
     return this.http.delete(this.host+'user/'+id,{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
-  loadToken() {
-    this.jwt = localStorage.getItem('token');
+  saveVisiteursVisite(visiteurs:Array<VisiteurModel>,visiteHs:VisiteHs){
+    if (this.jwt == null) this.loadToken();
+    return this.http.post(this.host+'visiteursvisite/'+visiteHs.id_viste,visiteurs,{headers: new HttpHeaders({'Authorization': this.jwt})})
   }
+
+  saveAgentsVisite(agents:Array<AgentModel>,visiteHs:VisiteHs){
+    if (this.jwt == null) this.loadToken();
+    console.log(agents);
+    console.log(visiteHs);
+    return this.http.post(this.host+'agentsvisite/'+visiteHs.id_viste,agents,{headers: new HttpHeaders({'Authorization': this.jwt})})
+  }
+
+  loadToken() {this.jwt = localStorage.getItem('token');}
 }

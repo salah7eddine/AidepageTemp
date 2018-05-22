@@ -10,7 +10,26 @@
     </ol>
   </section>
   <div class="container spacer">
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th><th>Ordre de Visite </th><th>Date de visite</th><th>Chantier</th><th>Nature des travaux</th> <th>Etat du Compte Rendu</th> <th>Actions</th>
+      </tr>
+      <tr *ngFor="let v of pageVisite">
+        <td>{{v.id_viste}}</td>
+        <td>{{v.date_visite}}</td>
+        <td>{{v.ordre_viste}}</td>
+        <td>{{v.chantier.libelle_chantier}}</td>
+        <td>{{v.description}}</td>
+        <td><span class="label label-info">{{v.compteRendu.etatCompteRendu.libelle}}</span></td>
 
+        <td>
+          <a (click)="show(v.id_viste)" class="clickable">Details</a>
+        </td>
+
+
+
+      </tr>
+    </table>
   </div>
 
 </div>

@@ -19,11 +19,11 @@ import {AgentModel} from "../user/Agent.model";
 export class VisiteHs{
 
 
-  idVisite:number=null;
-  dateVisite:Date=null;
-  ordreViste:String="";
-  natureTravaux:string="";
-  visiteurs:Array<VisiteurModel>=null; 
+  id_viste:number=null;
+  date_visite:Date=new Date();
+  ordre_viste:Date;
+  description:string="";//natureTravaux
+  visiteurs:Array<VisiteurModel>=null;
   agents:Array<AgentModel>=null;
 
   user:User=null;

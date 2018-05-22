@@ -20,14 +20,19 @@ export class VisiteService{
 
   getVisites(){
     if (this.jwt == null) this.loadToken();
-    return this.http.get(this.host + 'VisiteHs',{headers: new HttpHeaders({'Authorization': this.jwt})});
+    return this.http.get(this.host + 'visiteHs',{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
-
 
   getVisite(id:number){
     if (this.jwt == null) this.loadToken();
-    return this.http.get(this.host + 'VisiteHs/' +id,{headers: new HttpHeaders({'Authorization': this.jwt})});
+    return this.http.get(this.host + 'visiteHs/' +id,{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
+
+  getMyVisite(id:number){
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'myVisiteHs/' +id,{headers: new HttpHeaders({'Authorization': this.jwt})})
+  }
+
 
   saveVisite(visite:VisiteHs){
     if (this.jwt == null) this.loadToken();
