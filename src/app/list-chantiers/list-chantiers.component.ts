@@ -43,7 +43,6 @@ export class ListChantiersComponent implements OnInit {
 
   doSearch(){
     this.chantierservice.getChantiers(this.motCle,this.currentPage, this.size).subscribe(data=>{
-      console.log(data);
       this.pageChantiers=JSON.parse(JSON.stringify(data));
       this.pages=new Array(JSON.parse(JSON.stringify(data)).totalPages);
     },err=>{

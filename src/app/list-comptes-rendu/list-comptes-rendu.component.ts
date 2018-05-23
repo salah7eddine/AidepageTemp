@@ -62,20 +62,20 @@ export class ListComptesRenduComponent implements OnInit {
       dom: 'Bfrtip',
       // Configure the buttons
       buttons: [
-        'columnsToggle',
+       // 'columnsToggle',
         'colvis',
         'csv',
         'pdf',
         'copy',
         'print',
         'excel',
-        {
+     /*   {
           text: 'Some button',
           key: '1',
           action: function (e, dt, node, config) {
             alert('Button activated');
           }
-        }
+        }*/
       ]
 
     };
