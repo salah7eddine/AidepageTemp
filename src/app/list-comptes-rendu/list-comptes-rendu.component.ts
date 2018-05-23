@@ -54,7 +54,7 @@ export class ListComptesRenduComponent implements OnInit {
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 7,
+      pageLength: 10,
       language: {
         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
       },
@@ -79,12 +79,21 @@ export class ListComptesRenduComponent implements OnInit {
       ]
 
     };
-    this.visiteService.getVisites().subscribe(data=>{
-      this.pageVisite=data;
+
+    this.visiteService.getVisiteByEtat().subscribe(data=>{
+      this.visiteHS=JSON.parse(JSON.stringify(data));
+      this.pageVisite=this.visiteHS;
       this.dtTrigger.next();
     },err=>{
       console.log(err);
     });
+    /*this.visiteService.getVisites().subscribe(data=>{
+      this.visiteHS=JSON.parse(JSON.stringify(data));
+      this.pageVisite=this.visiteHS;
+      this.dtTrigger.next();
+    },err=>{
+      console.log(err);
+    });*/
     // Use this attribute to enable the responsive extension
    // responsive: true
   }

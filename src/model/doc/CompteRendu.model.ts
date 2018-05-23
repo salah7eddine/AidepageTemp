@@ -10,6 +10,6 @@ export class CompteRendu{
 
   constructor(etatCompteRendu:EtatCompteRendu){
     this.etatCompteRendu=this.etatCompteRendu;
-   // this.etatCompteRendu.id_etat=1;//TODO delete
+    //this.etatCompteRendu.id_etat=1;//TODO delete
   }
 }

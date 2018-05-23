@@ -33,6 +33,11 @@ export class VisiteService{
     return this.http.get(this.host + 'myVisiteHs/' +id,{headers: new HttpHeaders({'Authorization': this.jwt})})
   }
 
+  getVisiteByEtat(){
+    if (this.jwt == null) this.loadToken();
+    return this.http.get(this.host + 'visiteHsByEtat',{headers: new HttpHeaders({'Authorization': this.jwt})})
+  }
+
 
   saveVisite(visite:VisiteHs){
     if (this.jwt == null) this.loadToken();

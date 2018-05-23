@@ -5,6 +5,9 @@ import {Router} from "@angular/router";
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../model/user/User.model";
 import {Subject} from "rxjs/Rx";
+import {CompteRendu} from "../../model/doc/CompteRendu.model";
+import {CompteRenduService} from "../../services/doc/CompteRendu.service";
+import {VisiteHs} from "../../model/chantier/VisiteHs.model";
 
 @Component({
   selector: 'app-list-mes-comptes-rendu',
@@ -15,14 +18,15 @@ export class ListMesComptesRenduComponent implements OnInit {
   name:any=null;
   user:User=null;
   pageVisite:any=[];
+  visite:VisiteHs=null;
   dtOptions: DataTables.Settings = {};
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
-  constructor(public http:Http,public userService:UserService,public visiteService:VisiteService,public router:Router) { }
+  constructor(public http:Http,public userService:UserService,public visiteService:VisiteService,public router:Router,public compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
-    this.dtOptions = {
+ /*   this.dtOptions = {
       pagingType: 'full_numbers',// pagination related buttons
       pageLength: 7,// default page length
       language: {
@@ -39,16 +43,16 @@ export class ListMesComptesRenduComponent implements OnInit {
         'copy',
         'print',
         'excel',
-       /* {
+       /!* {
           text: 'Some button',
           key: '1',
           action: function (e, dt, node, config) {
             alert('Button activated');
           }
-        }*/
+        }*!/
       ]
 
-    };
+    };*/
     this.name=localStorage.getItem('username');
     this.userService.getUserByName(this.name).subscribe(data=>{
       this.user=JSON.parse(JSON.stringify(data));
@@ -67,6 +71,18 @@ export class ListMesComptesRenduComponent implements OnInit {
   }
   show(id:number){
     this.router.navigate(['/infosCompteRendu',id]);
+  }
+
+  valid(id:number){
+      this.visiteService.getVisite(id).subscribe(data=>{
+        this.visite=JSON.parse(JSON.stringify(data));
+        console.log(this.visite.compteRendu);
+        this.compteRenduService.updateCompteRenduByEtat(this.visite.compteRendu).subscribe(data=>{
+          console.log(data);
+        })
+      },err=>{
+        console.log(err);
+      })
   }
 
 

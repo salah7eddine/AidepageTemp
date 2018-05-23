@@ -25,6 +25,12 @@ export class CompteRenduService{
     return this.http.post(this.host + 'compteRendu', compteRendu,{headers: new HttpHeaders({'Authorization': this.jwt})});
   }
 
+  updateCompteRenduByEtat(compteRendu:CompteRendu){
+    if (this.jwt == null) this.loadToken();
+    return this.http.put(this.host + 'compteRenduByEtat'+compteRendu.id_compte_rendu, compteRendu,{headers: new HttpHeaders({'Authorization': this.jwt})});
+  }
+
+
   loadToken() {
     this.jwt = localStorage.getItem('token');
   }
