@@ -43,6 +43,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import {AuthentificationService} from "../services/user/authentification.service";
 import {HttpClientModule} from "@angular/common/http";
 import { InfosCompteRenduComponent } from './infos-compte-rendu/infos-compte-rendu.component';
+import {DataTablesModule} from "angular-datatables";
 
 
 const routes:Routes = [
@@ -90,7 +91,7 @@ const routes:Routes = [
     InfosCompteRenduComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule
+    BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule,DataTablesModule
   ],
   providers: [
     ChantierService,
