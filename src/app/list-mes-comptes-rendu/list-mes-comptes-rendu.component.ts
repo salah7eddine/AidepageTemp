@@ -19,6 +19,7 @@ export class ListMesComptesRenduComponent implements OnInit {
   user:User=null;
   pageVisite:any=[];
   visite:VisiteHs=null;
+  compteRendu:CompteRendu=null;
   dtOptions: DataTables.Settings = {};
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
@@ -26,7 +27,7 @@ export class ListMesComptesRenduComponent implements OnInit {
   constructor(public http:Http,public userService:UserService,public visiteService:VisiteService,public router:Router,public compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
- /*   this.dtOptions = {
+   /* this.dtOptions = {
       pagingType: 'full_numbers',// pagination related buttons
       pageLength: 7,// default page length
       language: {
@@ -56,7 +57,6 @@ export class ListMesComptesRenduComponent implements OnInit {
     this.name=localStorage.getItem('username');
     this.userService.getUserByName(this.name).subscribe(data=>{
       this.user=JSON.parse(JSON.stringify(data));
-      console.log(this.user);
       this.visiteService.getMyVisite(this.user.id_user).subscribe(data=>{
         this.pageVisite=data;
         this.dtTrigger.next();
@@ -76,9 +76,11 @@ export class ListMesComptesRenduComponent implements OnInit {
   valid(id:number){
       this.visiteService.getVisite(id).subscribe(data=>{
         this.visite=JSON.parse(JSON.stringify(data));
-        console.log(this.visite.compteRendu);
-        this.compteRenduService.updateCompteRenduByEtat(this.visite.compteRendu).subscribe(data=>{
+        this.compteRendu=this.visite.compteRendu;
+        console.log(this.compteRendu);
+        this.compteRenduService.updateCompteRenduByEtat(this.compteRendu).subscribe(data=>{
           console.log(data);
+          this.router.navigateByUrl("/listMesComptesRendu");
         })
       },err=>{
         console.log(err);

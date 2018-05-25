@@ -21,6 +21,9 @@ import {Http} from "@angular/http";
 import {VisiteService} from "../../services/chantier/VisiteHS.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {Subject} from "rxjs/Rx";
+import {UserService} from "../../services/user/user.service";
+import {AuthentificationService} from "../../services/user/authentification.service";
+import {CompteRenduService} from "../../services/doc/CompteRendu.service";
 @Component({
   selector: 'app-list-comptes-rendu',
   templateUrl: './list-comptes-rendu.component.html',
@@ -31,6 +34,7 @@ export class ListComptesRenduComponent implements OnInit {
 
   id:number;
   pageVisite:any=[];
+  visite:any=null;
   user:User = new User(new Fonction());
   compteRendu:CompteRendu = new CompteRendu(new EtatCompteRendu());
   chantier:Chantier = new Chantier(new EntrepriseSt(), new Service(new Entitie()), new TypeChantier());
@@ -49,10 +53,10 @@ export class ListComptesRenduComponent implements OnInit {
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(public http:Http,public visiteService:VisiteService,public router:Router) { }
+  constructor(public http:Http,public visiteService:VisiteService,public router:Router,private authService:AuthentificationService,private compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
-    this.dtOptions = {
+  /*  this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       language: {
@@ -69,17 +73,16 @@ export class ListComptesRenduComponent implements OnInit {
         'copy',
         'print',
         'excel',
-     /*   {
+       {
           text: 'Some button',
           key: '1',
           action: function (e, dt, node, config) {
             alert('Button activated');
           }
-        }*/
+        }
       ]
 
-    };
-
+    };*/
     this.visiteService.getVisiteByEtat().subscribe(data=>{
       this.visiteHS=JSON.parse(JSON.stringify(data));
       this.pageVisite=this.visiteHS;
@@ -103,5 +106,18 @@ export class ListComptesRenduComponent implements OnInit {
   }
 
 
+  valid(id:number){
+    this.visiteService.getVisite(id).subscribe(data=>{
+      this.visite=JSON.parse(JSON.stringify(data));
+      this.compteRendu=this.visite.compteRendu;
+      console.log(this.compteRendu);
+      this.compteRenduService.updateCompteRenduByEtat(this.compteRendu).subscribe(data=>{
+        console.log(data);
+        this.router.navigateByUrl("/listMesComptesRendu");
+      })
+    },err=>{
+      console.log(err);
+    })
+  }
 
 }

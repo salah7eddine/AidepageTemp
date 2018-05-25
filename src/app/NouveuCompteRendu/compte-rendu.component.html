@@ -26,20 +26,7 @@
     <div class="box-body">
       <div class="row">
         <div class="col-md-6">
-         <!-- User online -->
-        <!--
-          <div class="hidden">
-            <label for="user">User</label>
-            <input type="text" class="form-control" id="user" [(ngModel)]="visiteHS.user" value="{{user}}">
-          </div>-->
-          <!--
-          <div class="form-group">
-            <label><strong>Fonctions : </strong></label>
-            <select class="form-control select2" style="width: 100%;" [(ngModel)]="user.fonction">
-              <option *ngFor="let f of fonction" [value]="f.id"  >{{f.fontion}}</option>
-            </select>
-          </div>
-          -->
+
           <div class="form-group">
           <label><strong>Chantiers : </strong></label>
           <select class="form-control select2" style="width: 100%;" [(ngModel)]="visiteHS.chantier.id_chantier">
@@ -88,7 +75,6 @@
               <option *ngFor="let a of agents" [value]="a"  >{{a.pseudoName}}</option>
             </select>
           </div>
-
 
           <div class="form-group">
             <label><strong>Fonctions : </strong></label>
@@ -759,14 +745,11 @@
 
   <div class="box-body">
     <div class="row">
-      <div class="col-md-6">
+      <div class=" col-md-12">
 
         <button type="button" class="btn btn-block btn-primary btn-lg" (click)="saveCpteRendu()">Enregistrer</button>
       </div>
-      <div class="col-md-6">
 
-        <button type="button" class="btn btn-block btn-primary btn-lg">Valider</button>
-      </div>
     </div>
   </div>
 

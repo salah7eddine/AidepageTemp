@@ -9,7 +9,7 @@ export class CompteRendu{
   etatCompteRendu:EtatCompteRendu=null;
 
   constructor(etatCompteRendu:EtatCompteRendu){
-    this.etatCompteRendu=this.etatCompteRendu;
+    this.etatCompteRendu=etatCompteRendu;
     //this.etatCompteRendu.id_etat=1;//TODO delete
   }
 }

@@ -18,7 +18,7 @@
      </thead>
      <tfoot>
      <tr>
-       <th>ID</th><th>Ordre de Visite </th><th>Date de visite</th><th>Chantier</th><th>Nature des travaux</th> <th>Etat du Compte Rendu</th> <th>Actions</th>
+       <th>ID</th><th>Ordre de Visite </th><th>Date de visite</th><th>Chantier</th><th>Nature des travaux</th> <th>Etat du Compte Rendu</th> <th>Actions</th><th></th>
      </tr>
      </tfoot>
      <tbody>
@@ -32,6 +32,8 @@
        <td>
          <a (click)="show(v.id_viste)" class="clickable">Details</a>
        </td>
+       <button class="btn btn-primary" *ngIf="authService.isAps() && v.compteRendu.etatCompteRendu.id_etat==2" (click)="valid(v.id_viste)">Valider</button>
+       <button disabled class="btn btn-success"  *ngIf="v.compteRendu.etatCompteRendu.id_etat==3 ">Validé</button>
      </tr>
      </tbody>
     </table>

@@ -44,6 +44,7 @@ import {AuthentificationService} from "../services/user/authentification.service
 import {HttpClientModule} from "@angular/common/http";
 import { InfosCompteRenduComponent } from './infos-compte-rendu/infos-compte-rendu.component';
 import {DataTablesModule} from "angular-datatables";
+//import {PopupModule} from "ng2-opd-popup";
 
 
 const routes:Routes = [
@@ -91,7 +92,8 @@ const routes:Routes = [
     InfosCompteRenduComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule,DataTablesModule
+    BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule,DataTablesModule,
+    //PopupModule.forRoot()
   ],
   providers: [
     ChantierService,
@@ -113,6 +115,7 @@ const routes:Routes = [
     ActionChantierService,
     AuthentificationService
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

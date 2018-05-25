@@ -39,6 +39,9 @@ import {TypeObservationService} from "../../services/chantier/TypeObseravtions.s
 import {ActionChantierService} from "../../services/chantier/ActionChantierService";
 import {Router} from "@angular/router";
 import {AuthentificationService} from "../../services/user/authentification.service";
+import {NgbModal, ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
+import {PopupService} from "@ng-bootstrap/ng-bootstrap/util/popup";
+//import {Popup} from "ng2-opd-popup/index";
 
 @Component({
   selector: 'app-compte-rendu',
@@ -79,6 +82,7 @@ export class CompteRenduComponent implements OnInit {
   agents:any = null;
   visiteurs:any = null;
   typeObservations:any = null;
+  closeResult: string;
 
 
   constructor(public userService:UserService,
@@ -100,7 +104,9 @@ export class CompteRenduComponent implements OnInit {
               public typeObservationService:TypeObservationService,
               public actionChantierService:ActionChantierService,
               public router:Router,
-              public authService:AuthentificationService
+              public authService:AuthentificationService,
+             // private modalService: NgbModal,
+            // private popup:PopupService
   ) {
   }
 
@@ -216,7 +222,6 @@ export class CompteRenduComponent implements OnInit {
                     this.initVisit();
                     this.visiteService.saveVisite(this.visiteHS).subscribe(data8=>{
                       this.visiteHS=JSON.parse(JSON.stringify(data8));
-
                         this.observation.visiteHs=this.visiteHS;
                         this.observationService.saveObservation(this.observation).subscribe(data9=>{
                           this.observation=JSON.parse(JSON.stringify(data9));
@@ -249,4 +254,28 @@ export class CompteRenduComponent implements OnInit {
       this.chantier, this.balisageSignalisation, this.attitudeUrgence, this.documentChantier, this.rqs, this.epcEpi,
       this.amenagementChantier, this.hygieneProprete);
   }
+
+  /* ClickButton(){
+   this.popup.show();
+   }*/
+
+  /*open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }*/
 }

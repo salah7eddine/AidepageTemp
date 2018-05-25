@@ -33,7 +33,8 @@
           <a (click)="show(v.id_viste)" class="clickable">Details</a>
         </td>
         <td>
-          <button (click)="valid(v.id_viste)">Valider</button>
+          <button class="btn btn-primary" *ngIf="v.compteRendu.etatCompteRendu.id_etat==1" (click)="valid(v.id_viste)">Valider</button>
+          <button disabled class="btn btn-success"  *ngIf="v.compteRendu.etatCompteRendu.id_etat!=1 ">Validé</button>
         </td>
       </tr>
       </tbody>

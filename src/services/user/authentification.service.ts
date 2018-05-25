@@ -32,8 +32,6 @@ export class AuthentificationService {
   //  this.loggedIn.next(false);
     localStorage.clear();
   }
-  id
-
   isAdmin(){
     for (let r of this.roles){
       if(r.authority=='ADMIN') return true;
@@ -54,5 +52,4 @@ export class AuthentificationService {
     }
     return false;
   }
-
 }
