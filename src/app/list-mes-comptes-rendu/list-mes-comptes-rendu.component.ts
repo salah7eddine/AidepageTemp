@@ -20,14 +20,15 @@ export class ListMesComptesRenduComponent implements OnInit {
   pageVisite:any=[];
   visite:VisiteHs=null;
   compteRendu:CompteRendu=null;
-  dtOptions: DataTables.Settings = {};
+  // Must be declared as "any", not as "DataTables.Settings"
+  dtOptions: any = {};
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
   constructor(public http:Http,public userService:UserService,public visiteService:VisiteService,public router:Router,public compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
-   /* this.dtOptions = {
+    this.dtOptions = {
       pagingType: 'full_numbers',// pagination related buttons
       pageLength: 7,// default page length
       language: {
@@ -44,16 +45,16 @@ export class ListMesComptesRenduComponent implements OnInit {
         'copy',
         'print',
         'excel',
-       /!* {
+       /* {
           text: 'Some button',
           key: '1',
           action: function (e, dt, node, config) {
             alert('Button activated');
           }
-        }*!/
+        }*/
       ]
 
-    };*/
+    };
     this.name=localStorage.getItem('username');
     this.userService.getUserByName(this.name).subscribe(data=>{
       this.user=JSON.parse(JSON.stringify(data));

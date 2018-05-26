@@ -48,7 +48,8 @@ export class ListComptesRenduComponent implements OnInit {
   visiteHS:VisiteHs = new VisiteHs(this.user, this.compteRendu,
     this.chantier, this.balisageSignalisation, this.attitudeUrgence, this.documentChantier, this.rqs, this.epcEpi,
     this.amenagementChantier, this.hygieneProprete);
-  dtOptions: DataTables.Settings = {};
+  // Must be declared as "any", not as "DataTables.Settings"
+  dtOptions: any = {};
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject();
@@ -56,9 +57,9 @@ export class ListComptesRenduComponent implements OnInit {
   constructor(public http:Http,public visiteService:VisiteService,public router:Router,private authService:AuthentificationService,private compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
-  /*  this.dtOptions = {
+    this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10,
+      pageLength: 5,
       language: {
         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
       },
@@ -82,7 +83,7 @@ export class ListComptesRenduComponent implements OnInit {
         }
       ]
 
-    };*/
+    };
     this.visiteService.getVisiteByEtat().subscribe(data=>{
       this.visiteHS=JSON.parse(JSON.stringify(data));
       this.pageVisite=this.visiteHS;
