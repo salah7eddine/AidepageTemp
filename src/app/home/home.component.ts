@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import {Popup} from "ng2-opd-popup/index";
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,21 @@ export class HomeComponent implements OnInit {
     email:'med@gmail.com'
   };
 
+  comments=[
+    {date:new Date(),message:"A"},
+    {date:new Date(),message:"B"},
+    {date:new Date(),message:"C"},
+    {date:new Date(),message:"D"}
+  ];
 
+//private popup:Popup
   constructor() { }
 
   ngOnInit() {
   }
+
+ /* ClickButton(){
+    this.popup.show();
+  }*/
 
 }

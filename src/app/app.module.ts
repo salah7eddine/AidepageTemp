@@ -92,7 +92,7 @@ const routes:Routes = [
     InfosCompteRenduComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule,DataTablesModule,
+    BrowserModule,RouterModule.forRoot(routes),FormsModule,HttpModule,HttpClientModule,DataTablesModule
     //PopupModule.forRoot()
   ],
   providers: [

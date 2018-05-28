@@ -22,4 +22,32 @@
           </marquee>
           </div>
   </div>
+
+  <!--<div class="content">
+    <popup>
+      Add your custom html elements here
+    </popup>
+    <button (click)="ClickButton">Popup</button>
+  </div>-->
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">About</div>
+    <div class="panel-body">
+      <div>
+        <h3>Infos : </h3>
+        <ul class="list-group">
+          <li class="list-group-item">Nom : <strong>{{infos.name}}</strong></li>
+          <li class="list-group-item">Email : <strong>{{infos.email}}</strong></li>
+        </ul>
+      </div>
+    </div>
+    <h3>Commentaires : </h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let c of comments">
+        {{c.message}},
+        <span>{{c.date}}</span>
+
+      </li>
+    </ul>
+  </div>
 </div>

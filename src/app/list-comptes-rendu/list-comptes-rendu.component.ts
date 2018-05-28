@@ -57,7 +57,7 @@ export class ListComptesRenduComponent implements OnInit {
   constructor(public http:Http,public visiteService:VisiteService,public router:Router,private authService:AuthentificationService,private compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
-    this.dtOptions = {
+   /* this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
       language: {
@@ -83,7 +83,7 @@ export class ListComptesRenduComponent implements OnInit {
         }
       ]
 
-    };
+    };*/
     this.visiteService.getVisiteByEtat().subscribe(data=>{
       this.visiteHS=JSON.parse(JSON.stringify(data));
       this.pageVisite=this.visiteHS;

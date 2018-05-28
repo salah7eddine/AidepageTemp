@@ -35,8 +35,9 @@
     "datatables.net-responsive-dt": "^2.2.1",
     "jquery": "^3.3.1",
     "jspdf": "^1.4.0",
+    "moment": "^2.22.1",
     "ng2-opd-popup": "^1.1.21",
-    "rxjs": "^5.5.6",
+    "rxjs": "^5.5.2",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
@@ -61,6 +62,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
+    "typescript": "^2.4.2"
   }
 }

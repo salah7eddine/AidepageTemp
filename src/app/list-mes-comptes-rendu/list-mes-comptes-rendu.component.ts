@@ -28,7 +28,7 @@ export class ListMesComptesRenduComponent implements OnInit {
   constructor(public http:Http,public userService:UserService,public visiteService:VisiteService,public router:Router,public compteRenduService:CompteRenduService) { }
 
   ngOnInit() {
-    this.dtOptions = {
+  /*  this.dtOptions = {
       pagingType: 'full_numbers',// pagination related buttons
       pageLength: 7,// default page length
       language: {
@@ -45,16 +45,16 @@ export class ListMesComptesRenduComponent implements OnInit {
         'copy',
         'print',
         'excel',
-       /* {
+       /!* {
           text: 'Some button',
           key: '1',
           action: function (e, dt, node, config) {
             alert('Button activated');
           }
-        }*/
+        }*!/
       ]
 
-    };
+    };*/
     this.name=localStorage.getItem('username');
     this.userService.getUserByName(this.name).subscribe(data=>{
       this.user=JSON.parse(JSON.stringify(data));
