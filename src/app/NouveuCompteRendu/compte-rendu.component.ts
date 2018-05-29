@@ -51,8 +51,10 @@ import {PopupService} from "@ng-bootstrap/ng-bootstrap/util/popup";
 export class CompteRenduComponent implements OnInit {
 
 
+
   user:User = new User(new Fonction());
-  compteRendu:CompteRendu = new CompteRendu(new EtatCompteRendu());
+  etatCompteRendu:EtatCompteRendu=new EtatCompteRendu();
+  compteRendu:CompteRendu = new CompteRendu(this.etatCompteRendu);
   chantier:Chantier = new Chantier(new EntrepriseSt(), new Service(new Entitie()), new TypeChantier());
   balisageSignalisation:BalisageSignalisation = new BalisageSignalisation();
   attitudeUrgence:AttitudeUrgence = new AttitudeUrgence();
@@ -61,7 +63,6 @@ export class CompteRenduComponent implements OnInit {
   epcEpi:EpcEpi = new EpcEpi();
   amenagementChantier:AmenagementChantier = new AmenagementChantier();
   hygieneProprete:HygieneProprete = new HygieneProprete();
-
   visiteHS:VisiteHs = new VisiteHs(this.user, this.compteRendu,
     this.chantier, this.balisageSignalisation, this.attitudeUrgence, this.documentChantier, this.rqs, this.epcEpi,
     this.amenagementChantier, this.hygieneProprete);
@@ -71,6 +72,7 @@ export class CompteRenduComponent implements OnInit {
 
   /* -----Action-------- */
   action:Action = new Action(this.visiteHS.chantier);
+
 
   name:any = null;
   reponse:any = null;
@@ -212,8 +214,11 @@ export class CompteRenduComponent implements OnInit {
                 this.epcEpi=JSON.parse(JSON.stringify(data5));
                 this.attitudeUrgenceService.saveAttitudeUrgence(this.attitudeUrgence).subscribe(data6=>{
                   this.attitudeUrgence=JSON.parse(JSON.stringify(data6));
+                  this.etatCompteRendu.id_etat=1;
                   this.compteRenduService.saveCompteRendu(this.compteRendu).subscribe(data7=>{
                     this.compteRendu=JSON.parse(JSON.stringify(data7));
+                    console.log("-------compteRendu-------");
+                    console.log(this.compteRendu);
                     this.name=localStorage.getItem('username');
                     this.userservice.getUserByName(this.name).subscribe(data10=>{
                       this.user=JSON.parse(JSON.stringify(data10));
@@ -254,6 +259,7 @@ export class CompteRenduComponent implements OnInit {
       this.chantier, this.balisageSignalisation, this.attitudeUrgence, this.documentChantier, this.rqs, this.epcEpi,
       this.amenagementChantier, this.hygieneProprete);
   }
+
 
   /* ClickButton(){
    this.popup.show();

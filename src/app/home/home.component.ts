@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
     {date:new Date(),message:"D"}
   ];
 
+  commentaire={date:null,message:""};
+
 //private popup:Popup
   constructor() { }
 
@@ -29,5 +31,11 @@ export class HomeComponent implements OnInit {
  /* ClickButton(){
     this.popup.show();
   }*/
+
+  onAddCommentaire(){
+    this.commentaire.date=new Date();
+    this.comments.push(this.commentaire);
+    this.commentaire={date:null,message:""};
+  }
 
 }

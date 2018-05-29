@@ -11,4 +11,13 @@ export class EtatCompteRendu{
   constructor(){
 
   }
+
+  get idEtat():number{
+    return this.id_etat;
+  }
+
+  set idEtat(id:number){
+    this.id_etat=id;
+  }
+
 }
